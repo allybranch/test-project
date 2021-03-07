@@ -1,5 +1,16 @@
 
+/* COLORS
+blue: #059abb
+red: #C5283DEB
+yellow/orange: #FFAE4B;
+
+*/
+
 /* GENERAL */
+
+html {
+    overflow-y: hidden;
+}
 
 a {
   text-decoration: none !important;
@@ -13,7 +24,10 @@ a:hover {
 /* NAVIGATION BAR */
 .navbar-brand{
   color: white;
+  font-weight: bold;
 }
+
+
 
 .navbar {
   background-color: #C5283DEB;
@@ -21,13 +35,13 @@ a:hover {
 
 #register-page{
   background-color: #C5283DEB;
-  padding-top: 60px;
+  padding-top: 20px;
   padding-bottom: 300px;
 }
 
 #login-page{
   background-color: #C5283DEB;
-  padding-top: 60px;
+  padding-top: 20px;
   padding-bottom: 300px;
 }
 
@@ -42,11 +56,16 @@ a:hover {
 }
 
 .logo-img {
-  border: 5px solid #C5283DEB;
-  height: 110px;
-  width: 110px;
-  margin: 0px auto 20px auto;
-  padding-bottom: 20px;
+  /* border: 5px solid blue; */
+  width: 100%;
+  margin: -20px auto 0px auto;
+  align-self: center;
+}
+
+.logo-img-container{
+  /* border: 5px solid #C5283DEB; */
+  margin: 0px auto 0px auto;
+  max-width: 150px;
 }
 
 
@@ -54,7 +73,7 @@ a:hover {
 
 form > h1{
   text-align: center;
-  color: #C5283DEB;
+  color: black;
 }
 
 form > .row {
@@ -93,12 +112,12 @@ form > .col {
   width: 50%;
   margin: 10px auto;
   text-align: center;
-  background-color: #C5283DEB;
+  background-color: #059abb;
   border: none;
 }
 
 .form-btn:hover{
-  background-color: #C5283DBC;
+  background-color: #69c2d6;
 }
 
 /* REGISTER PAGE */
