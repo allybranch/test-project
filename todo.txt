@@ -1,0 +1,13 @@
+
+
+clean up code for login.html, register.html, and styles.css
+
+decide on color scheme
+
+figure out header buttons vs links and collapsing navbar
+
+come up with a good website name
+
+make logo or little image / icon ???
+
+start working on home.html

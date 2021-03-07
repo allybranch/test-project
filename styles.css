@@ -1,0 +1,142 @@
+
+/* GENERAL */
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+/* NAVIGATION BAR */
+.navbar-brand{
+  color: white;
+}
+
+.navbar {
+  background-color: #C5283DEB;
+}
+
+#register-page{
+  background-color: #C5283DEB;
+  padding-top: 60px;
+  padding-bottom: 300px;
+}
+
+#login-page{
+  background-color: #C5283DEB;
+  padding-top: 60px;
+  padding-bottom: 300px;
+}
+
+.form-signin {
+  background-color: white;
+  padding: 60px 20px;
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 10px
+
+}
+
+.logo-img {
+  border: 5px solid #C5283DEB;
+  height: 110px;
+  width: 110px;
+  margin: 0px auto 20px auto;
+  padding-bottom: 20px;
+}
+
+
+/* LOGIN PAGE */
+
+form > h1{
+  text-align: center;
+  color: #C5283DEB;
+}
+
+form > .row {
+  margin: 20px auto;
+  max-width: 400px
+
+}
+
+form > .col {
+  margin: 0px;
+}
+
+.active-header-btn {
+  border-radius: 25px;
+  padding: 10px;
+  background-color: white;
+  border: 3px solid white;
+  color: #C5283DEB;
+  font-weight: bold;
+  margin: 5px;
+
+}
+.inactive-header-btn {
+  border-radius: 25px;
+  padding: 10px;
+  background-color: #C5283DEB;
+  border: 3px solid white;
+  color: white;
+  font-weight: bold;
+  margin: 5px;
+
+}
+
+.form-btn{
+  border-radius: 25px;
+  width: 50%;
+  margin: 10px auto;
+  text-align: center;
+  background-color: #C5283DEB;
+  border: none;
+}
+
+.form-btn:hover{
+  background-color: #C5283DBC;
+}
+
+/* REGISTER PAGE */
+
+/* BROWSE PAGE */
+
+.carousel{
+  height: 250px;
+}
+.title-card-container {
+  width: 250px;
+  height: 200px;
+  display: inline-block;
+  padding-top: 10px;
+}
+
+.title-card {
+  width: 90%;
+  height: 80%;
+  background-color: #e6e6e6;
+  margin: auto;
+}
+
+.title-card:hover{
+  width: 100%;
+  height: 100%;
+}
+
+.title-card:hover .movie-title{
+}
+
+.title-card:hover .movie-description{
+}
+
+.movie-description{
+  display: none;
+}
+
+.movie-title {
+  text-align: center;
+}
