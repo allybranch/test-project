@@ -1,63 +1,51 @@
 
 /* COLORS
 blue: #059abb
-red: #C5283DEB
+red: #E03E52
 yellow/orange: #FFAE4B;
 */
 
-
+/* GENERAL */
 html, body{
   height: 100%;
 }
-
 .main-page-area{
   padding: 20px;
 }
-
-/* GENERAL */
-
-
-
 a {
   text-decoration: none !important;
   color: inherit;
 }
-
 a:hover {
   color: inherit;
 }
 
-/* NAVIGATION BAR */
 
+/* NAVIGATION BAR */
 #header-search{
   background-color: white;
 }
-
 .navbar-toggler-icon{
   color: white;
 }
-
 .navbar-brand{
   color: white;
   font-weight: bold;
   margin: auto;
 }
-
 .navbar-logo{
   width: 40px;
 }
-
 .navbar {
   background-color:  #E03E52;
 }
 
 
-
+/* REGISTER AND LOGIN PAGES */
 #register-page, #login-page{
   background-color:  #E03E52;
   height: 100%;
 }
-
 .form-signin {
   background-color: white;
   padding: 60px 20px;
@@ -67,85 +55,58 @@ a:hover {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
 .form-signin  button{
   background-color: #E03E52;
   border: none;
 }
 .form-signin button:hover{
   background-color: #FFAE4B;
-
 }
-
-
-
 .logo-img {
   /* border: 5px solid blue; */
   width: 100%;
   margin: -20px auto 0px auto;
   align-self: center;
 }
-
 .logo-img-container{
   /* border: 5px solid #C5283DEB; */
   margin: 0px auto 0px auto;
   max-width: 150px;
 }
-
-
-/* LOGIN PAGE */
-
 form > h1{
   text-align: center;
   color: black;
 }
-
 form > .row {
   margin: 20px auto;
   max-width: 400px
-
 }
-
 form > .col {
   margin: 0px;
 }
-
 @media screen and (min-width: 576px) {
-  .active-header-btn {
+  .active-header-btn, .inactive-header-btn {
     border-radius: 25px;
     padding: 5px 10px;
+    border: 3px solid white;
+    font-weight: bold;
+    margin: 5px;
+  }
+  .active-header-btn{
     background-color: white;
-    border: 3px solid white;
     color: #E03E52;
-    font-weight: bold;
-    margin: 5px;
   }
-}
-
-
-@media screen and (min-width: 576px) {
-  .inactive-header-btn {
-    border-radius: 25px;
-    padding: 5px 10px;
-    background-color: #E03E52;
-    border: 3px solid white;
+  .inactive-header-btn{
     color: white;
-    font-weight: bold;
-    margin: 5px;
-
+    background-color: #E03E52;
   }
 }
-
 @media screen and (max-width: 576px) {
   .active-header-btn, .inactive-header-btn {
     color: white;
     text-align: center;
     width: 100%;
   }
-}
-
-
-@media screen and (max-width: 576px) {
   .nav-item{
     padding: 10px 0px;
     width: 100%;

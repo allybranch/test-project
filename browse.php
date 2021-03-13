@@ -21,7 +21,6 @@
       <!-- Set up your HTML -->
       <h1 class="page-title"> My Lists </h1>
 
-
       <h2 class="list-title"> List 1 </h2>
       <div class="owl-carousel owl-theme">
           <div class="item">
@@ -135,10 +134,7 @@
       </div>
 
     </div>
-
-
   </body>
-
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="owlcarousel/owl.carousel.min.js"></script>
