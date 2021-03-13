@@ -3,14 +3,20 @@
 blue: #059abb
 red: #C5283DEB
 yellow/orange: #FFAE4B;
-
 */
+
+
+html, body{
+  height: 100%;
+}
+
+.main-page-area{
+  padding: 20px;
+}
 
 /* GENERAL */
 
-html {
-    overflow-y: hidden;
-}
+
 
 a {
   text-decoration: none !important;
@@ -22,27 +28,34 @@ a:hover {
 }
 
 /* NAVIGATION BAR */
+
+#header-search{
+  background-color: white;
+}
+
+.navbar-toggler-icon{
+  color: white;
+}
+
 .navbar-brand{
   color: white;
   font-weight: bold;
+  margin: auto;
 }
 
-
+.navbar-logo{
+  width: 40px;
+}
 
 .navbar {
-  background-color: #C5283DEB;
+  background-color:  #E03E52;
 }
 
-#register-page{
-  background-color: #C5283DEB;
-  padding-top: 20px;
-  padding-bottom: 300px;
-}
 
-#login-page{
-  background-color: #C5283DEB;
-  padding-top: 20px;
-  padding-bottom: 300px;
+
+#register-page, #login-page{
+  background-color:  #E03E52;
+  height: 100%;
 }
 
 .form-signin {
@@ -51,9 +64,20 @@ a:hover {
   width: 90%;
   max-width: 500px;
   margin: auto;
-  border-radius: 10px
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-signin  button{
+  background-color: #E03E52;
+  border: none;
+}
+.form-signin button:hover{
+  background-color: #FFAE4B;
 
 }
+
+
 
 .logo-img {
   /* border: 5px solid blue; */
@@ -86,76 +110,49 @@ form > .col {
   margin: 0px;
 }
 
-.active-header-btn {
-  border-radius: 25px;
-  padding: 10px;
-  background-color: white;
-  border: 3px solid white;
-  color: #C5283DEB;
-  font-weight: bold;
-  margin: 5px;
-
-}
-.inactive-header-btn {
-  border-radius: 25px;
-  padding: 10px;
-  background-color: #C5283DEB;
-  border: 3px solid white;
-  color: white;
-  font-weight: bold;
-  margin: 5px;
-
+@media screen and (min-width: 576px) {
+  .active-header-btn {
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: white;
+    border: 3px solid white;
+    color: #E03E52;
+    font-weight: bold;
+    margin: 5px;
+  }
 }
 
-.form-btn{
-  border-radius: 25px;
-  width: 50%;
-  margin: 10px auto;
-  text-align: center;
-  background-color: #059abb;
-  border: none;
+
+@media screen and (min-width: 576px) {
+  .inactive-header-btn {
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: #E03E52;
+    border: 3px solid white;
+    color: white;
+    font-weight: bold;
+    margin: 5px;
+
+  }
 }
 
-.form-btn:hover{
-  background-color: #69c2d6;
+@media screen and (max-width: 576px) {
+  .active-header-btn, .inactive-header-btn {
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
 }
 
-/* REGISTER PAGE */
 
-/* BROWSE PAGE */
-
-.carousel{
-  height: 250px;
-}
-.title-card-container {
-  width: 250px;
-  height: 200px;
-  display: inline-block;
-  padding-top: 10px;
-}
-
-.title-card {
-  width: 90%;
-  height: 80%;
-  background-color: #e6e6e6;
-  margin: auto;
-}
-
-.title-card:hover{
-  width: 100%;
-  height: 100%;
-}
-
-.title-card:hover .movie-title{
-}
-
-.title-card:hover .movie-description{
-}
-
-.movie-description{
-  display: none;
-}
-
-.movie-title {
-  text-align: center;
+@media screen and (max-width: 576px) {
+  .nav-item{
+    padding: 10px 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-item:hover{
+    background-color: #dc5668;
+    color: white;
+  }
 }
