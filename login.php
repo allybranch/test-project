@@ -1,28 +1,23 @@
 
-<?php 
+<?php
 $usnm = $pwd = NULL;
 $usnm_mess = $pwd_msg = NULL;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  
+
   if(!empty($_POST['username']))
     $usnm = $_POST['username'];
 
-  else   
+  else
     $name_msg="Please enter your username";
 
   if(!empty($_POST['password']))
     $name = $_POST['password'];
 
-  else   
+  else
     $name_msg="Please enter your password";
 }
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 
@@ -51,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-              <a class="active-header-btn justify-content-end navbar-dark" href="login.html">
+              <a class="active-header-btn justify-content-end navbar-dark" href="login.php">
                 <li class="nav-item">Sign In</li>
               </a>
               <a class="inactive-header-btn" href="register.html">
@@ -80,10 +75,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <div class="col">
                   <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
                   <span name="error" class="error message" id="pwd_msg"> </span>
+                  <div class="form-group showPassword">
+                    <input  type="checkbox" id="showPassword" /> Show password
+                  </div>
                 </div>
-                <div class="form-group">
-                  <input type="checkbox" id="showPassword" /> Show password 
-                </div>
+
             </div>
             <div class="text-center">
               <button class="btn btn-lg btn-primary form-btn" type="submit">SIGN IN</button>
@@ -106,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       return false;
     }
     function validateUsername(){
-         
+
         var username= document.getElementById('inputUsername').value;
 
         //username needs to be <= 20 characters
@@ -115,24 +111,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           return true;
         }
         else{//otherwise it's too short
-          document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters, and it cannot only be numbers."; 
+          document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters, and it cannot only be numbers.";
           document.getElementById("inputUsername").value = username;
           return false;
         }
       }
 
-      /* Validate Password */ 
+      /* Validate Password */
       //input validation + relevant error messagess
       function validatePassword(){
         var password = document.getElementById('inputPassword').value;
-        
+
         //passwords need to be larger than 8 characters
         if(password.length > 8 && is_NaN(password)){
           document.getElementById('pwd_msg').value = "";
           return true;
         }
         else{//otherwise it's too short
-          document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers."; 
+          document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers.";
           document.getElementById("inputPassword").value = password;
           return false;
         }
@@ -144,17 +140,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       (function() {
       var pwd = document.getElementById("inputPassword");             // get password input
       var show = document.getElementById("showPassword");        // get checkbox input
-      
+
       show.addEventListener("change", function() {          // when user click on checkbox
          try {
-        	if (show.checked)                               
+        	if (show.checked)
                pwd.type ="text";                            // change type of password box to text, thus show the entry
         	else
                pwd.type = "password";                       // change type of password box to password, thus mask the entry
          } catch(error) {
             alert("Cannot switch type");
-         }         
-      }, false);      
+         }
+      }, false);
    }());
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

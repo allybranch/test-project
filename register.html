@@ -56,13 +56,13 @@
               </div>
               <div class="row g-3">
                 <div class="col">
-                  <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-                  <span class="error message" id="user_msg"></span>
+                  <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" autofocus>
                 </div>
               </div>
               <div class="row g-3">
                 <div class="col">
-                  <input type="email" id="inputEmail" class="form-control" placeholder=required autofocus>
+                  <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                  <span class="error message" id="user_msg"></span>
                 </div>
               </div>
               <div class="row g-3">
@@ -79,8 +79,8 @@
       </div>
     </body>
 
-    <script> 
-    
+    <script>
+
     function validateSubmission(){
       if(validateFirstName() && validateLastName() && validatePassword() && validateUsername()){
         return true;
@@ -96,7 +96,7 @@
         return true;
       }
       else{
-           document.getElementById("fname_msg").innerHTML = "Your first name cannot be numbers."; 
+           document.getElementById("fname_msg").innerHTML = "Your first name cannot be numbers.";
            document.getElementById("firstname").value = firstname;
            return false;
          }
@@ -111,50 +111,50 @@
 
       }
       else{
-           document.getElementById("lname_msg").innerHTML = "Your last name cannot be numbers."; 
+           document.getElementById("lname_msg").innerHTML = "Your last name cannot be numbers.";
            document.getElementById("lastname").value = lastname;
            return false;
          }
     }
-    
+
       /* Validate Username */
       //validate input + provide relevant error messages
       function validateUsername(){
-         
+
          var username= document.getElementById('inputUsername').value;
- 
+
          //username needs to be <= 20 characters
          if(username.length <= 20 && username.length > 0 && isNaN(username)){
            document.getElementById('user_msg').value = "";
            return true;
          }
          else{//otherwise it's too short
-           document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters."; 
+           document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters.";
            document.getElementById("inputUsername").value = username;
            return false;
          }
        }
- 
-       /* Validate Password */ 
+
+       /* Validate Password */
        //input validation + relevant error messagess
        function validatePassword(){
          var password = document.getElementById('inputPassword').value;
-         
+
          //passwords need to be larger than 8 characters
          if(password.length > 8 && isNaN(password)){
            document.getElementById('pwd_msg').value = "";
            return true;
          }
          else{//otherwise it's too short
-           document.getElementById("pwd_msg").innerHTML = "Your password must be longer than 8 characters."; 
+           document.getElementById("pwd_msg").innerHTML = "Your password must be longer than 8 characters.";
            document.getElementById("inputPassword").value = password;
            return false;
          }
        }
-    
-    
-    
-    
+
+
+
+
     </script>
     <!-- Bootstrap Javascript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

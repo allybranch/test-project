@@ -19,9 +19,9 @@
     <div class="main-page-area">
 
       <!-- Set up your HTML -->
-      <h1 class="page-title"> My Lists </h1>
+      <h1 class="page-title"> Explore New Titles </h1>
 
-      <h4 class="list-title"> Currently Watching </h4>
+      <h4 class="list-title"> Category 1 </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
               <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABVpWLG11PojFPeqpJyc14l1iTPUtb-7K9nONUphboJDuTEUdXQNfPgHzcttWQhMCSvsS6SSo5qmheyWPwmLPGmqpfCGXV8MvxrJMeLUbMgxLFAOgxWcw8on2bnW3.jpg?r=748" ></img>
@@ -73,7 +73,7 @@
           </div>
       </div>
 
-      <h4 class="list-title"> Watched This Year </h4>
+      <h4 class="list-title"> Category 2 </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
               <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABX1svJIb1AOBr3oSIMolMtiQl4j6IDNINnSHG5_nERnnJUiXcl-oQ2k0QvlZNNgTKBmVMEeHLCpZxT01msh92I0p36U.webp?r=23e" ></img>
@@ -110,7 +110,7 @@
           </div>
       </div>
 
-      <h4 class="list-title"> Want To Watch </h4>
+      <h4 class="list-title"> Category 3 </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
               <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABQD8m-2mxOHI8Ut091vswaxKjsEtVBbHlZaZMDWqj1LIBF3LsWK0aIyFINwtbLzmM4RQf14mizuQNJeEBilq2bvskfc.webp?r=c9f" ></img>

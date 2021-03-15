@@ -74,6 +74,10 @@ a:hover {
   margin: 0px auto 0px auto;
   max-width: 150px;
 }
+.showPassword{
+  padding: 5px;
+  text-align: center;
+}
 form > h1{
   text-align: center;
   color: black;
@@ -96,6 +100,7 @@ form > .col {
   .active-header-btn{
     background-color: white;
     color: #E03E52;
+    margin-left: 10px;
   }
   .inactive-header-btn{
     color: white;
@@ -153,6 +158,17 @@ form > .col {
 }
 
 
+
+.profile-container1{
+  padding: 10px 50px;
+  margin-top: 10px;
+}
+.profile-container2{
+  background-color: #efefef;
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+}
 
 /* BROWSE */
 .page-title{
