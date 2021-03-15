@@ -62,7 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <body id="login-page">
       <div class="main-page-area">
         <main class="form-signin">
-          <form method="POST" action="profile.php" onsubmit="return validateSubmission()">
+          <form method="POST" id='loginform' action="profile.php" onsubmit="return validateSubmission()">
             <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
             <h1 class="page-title"> Welcome Back! </h1>
             <div class="row g-3">
@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             </div>
             <div class="text-center">
-              <button class="btn btn-lg btn-primary form-btn" type="submit">SIGN IN</button>
+              <button class="btn btn-lg btn-primary form-btn" id='submit' type="submit">SIGN IN</button>
             </div
           </form>
         </main>
@@ -91,6 +91,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
     <script>
+
+    // (function(){
+    //   var loginform = document.getElementById("loginform");
+    //   var submit=document.getElementById('submit');
+    //   var submitted=false;
+
+    //   submit.disabled=true;
+    //   submit.className='disabled';
+
+    //   loginform.addEventListener("input", function() {  
+    //     if(loginform[0].value!='' && loginform[1].value!=''){
+
+    //       try {
+    //         submit.disabled = false;
+    //         submit.className = "enabled";
+    //      } catch(error) {
+    //         alert("Cannot switch type");
+    //      }         
+    //   }, false); 
+    //     }            // use on input event
+         
+
+    // }());
+    
 
       /* Validate Username */
       //validate input + provide relevant error messages

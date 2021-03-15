@@ -9,6 +9,11 @@
       <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
       <link rel="stylesheet" href="styles.css">
+
+      <style>
+        #test{float: left}
+        #test2 {float: right}
+        </style>
     </head>
 
 
@@ -16,15 +21,69 @@
     <?php include('header.html')?>
 
     <div class="profile-container1">
-      <h1> My Profile </h1>
-        <h4> Username </h4>
-        <h4> Name </h4>
-        <p> Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+      <form method="POST" id='loginform' action="profile.php" onsubmit="saveInfo()" >
+      <h1> Account Information </h1>  
+      <div class="row g-3">
+        <div class="col">
+          <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+          <span name="error" class="error message" id="user_msg"> </span>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
+          <span name="error" class="error message" id="pwd_msg"> </span>
+          <div class="form-group showPassword">
+            <input  type="checkbox" id="showPassword" /> Show password
+          </div>
+        </div>
     </div>
+
+    <div class="row g-3">
+      <div class="col">
+        <input type="text" id='firstname' class="form-control" placeholder="First name" aria-label="First name">
+        <span class="error message" id="fname_msg"></span>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col">
+        <input type="text" id='lastname' class="form-control" placeholder="Last name" aria-label="Last name">
+        <span class="error message" id="lname_msg"></span>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" autofocus>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type='submit' class="btn btn-lg btn-primary form-btn" id='save' >Save</button>
+    </div
+    </form>
+      </div>
+
+
 
     <div class="main-page-area">
       <div class="profile-container2">
-      <h1 class="page-title"> My Lists </h1>
+         
+      <div class='test' id='test'>
+              <h1 > My Lists </h1>  
+      </div>
+
+      <div id='test2'> 
+        <button  class="btn btn-lg btn-primary form-btn" onclick="newList()"> New List</button>
+      </div>
+
+      <br> </br>
+      <br> </br>
+
+      <table>
+        <tr>
       <h4 class="list-title"> Currently Watching </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
@@ -76,7 +135,8 @@
               <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABfuIXSPh5wc-f7oUq7CUDS8m2Ou8svZWdt5lMY4THWfTeLv7qR-FkgeNcoLFdCAL9fYLc2ksZd-_eb8WoCbIDfPMwY4.webp?r=575" ></img>
           </div>
       </div>
-
+</tr>
+<tr>
       <h4 class="list-title"> Watched This Year </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
@@ -113,7 +173,8 @@
             <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABUqFTSb5Og6Jk2QuOJEPXQzbJyiPxuqR6Ep_kjPtKY3ZBt7qOdLWSWZidhoQjLfLllW3t-p-0X93StIsFqZtQpYRKpCcGC82WNqJrq3c7_1fYeSL49OLdpDxFPti.jpg?r=cff"></img>
           </div>
       </div>
-
+</tr>
+<tr>
       <h4 class="list-title"> Want To Watch </h4>
       <div class="owl-carousel owl-theme">
           <div class="item">
@@ -162,9 +223,12 @@
               <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABd5Q66-LLwMrV8ekr5kx6Op5Y-1SeHQSEx8lhX9MCvS3rgV-1G_mUhPBqrixDts-L_AOdPj_dwIM0enLVdp9dx2EWxk.webp?r=75a" ></img>
           </div>
       </div>
+</tr>
+</table>
+      </div>
     </div>
-  </div>
-  </body>
+
+      </body>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="owlcarousel/owl.carousel.min.js"></script>
@@ -196,5 +260,16 @@
           }
       }
     })
+</script>
+
+<script> 
+
+function saveInfo(){
+
+  var usr = document.getElementById('inputUsername').value;
+  
+
+  document.getElementById('inputUsername').value= usr;
+}
 </script>
 </html>
