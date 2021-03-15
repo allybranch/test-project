@@ -4,9 +4,9 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-      <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
-      <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
-      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.carousel.min.css">
+      <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.theme.default.min.css">
+      <link rel="stylesheet" href="stylesheets/styles.css">
 
     </head>
 

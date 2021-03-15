@@ -1,3 +1,7 @@
+<link type="text/css" rel="stylesheet" href="/stylesheets/styles.css">
+<link rel="stylesheet" href="/stylesheets/owlcarousel/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="/stylesheets/owlcarousel/assets/owl.theme.default.min.css">
+
 <?php
 switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
    case '/':                   // URL (without file name) to a default screen
