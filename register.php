@@ -6,11 +6,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
       <link rel="stylesheet" href="stylesheets/styles.css">
-      <style>
-         .error  { display: block; font-style: italic; color: red; }
-         ul li{text-align: center; list-style-position:inside}
-         #pwdinstr{background:lightblue; border: solid, lightblue;}
-      </style>
     </head>
 
     <body id="register-page">
@@ -52,8 +47,10 @@
               <div id='pwdinstr' class='text-center'>
                 Your password must satisfy these requirements:
                 <ul>
-                  <li>Cannot less than 8 characters </li>
-                  <li>Must be a mix of letters, numbers and symbols </li>
+                  <div id='pwditems'>
+                    <li>Cannot less than 8 characters </li>
+                    <li>Must be a mix of letters, numbers and symbols </li>
+                  </div>
                 </ul>
               </div>
 
@@ -94,11 +91,7 @@
     </body>
 
     <script>
-
-    /* Hide Password Instructions*/ 
-    var pwd_instr = document.getElementById('pwdinstr');
-    pwd_instr.style.display="none";
-
+    
     /*Show Password Instructions*/
     function showPwdInstructions(){
       var pwdinstr = document.getElementById("pwdinstr");

@@ -34,6 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </head>
 
     <body>
+      
       <!-- Navigation Bar -->
       <header>
         <nav class="navbar navbar-expand-sm">
@@ -92,33 +93,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     <script>
 
-    // (function(){
-    //   var loginform = document.getElementById("loginform");
-    //   var submit=document.getElementById('submit');
-    //   var submitted=false;
-
-    //   submit.disabled=true;
-    //   submit.className='disabled';
-
-    //   loginform.addEventListener("input", function() {  
-    //     if(loginform[0].value!='' && loginform[1].value!=''){
-
-    //       try {
-    //         submit.disabled = false;
-    //         submit.className = "enabled";
-    //      } catch(error) {
-    //         alert("Cannot switch type");
-    //      }         
-    //   }, false); 
-    //     }            // use on input event
-         
-
-    // }());
-    
-
-      /* Validate Username */
+      /* Validate All Fields */
       //validate input + provide relevant error messages
-
     function validateSubmission(){
       if(validateUsername() && validatePassword()){
         return true;
@@ -177,6 +153,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       }, false);
    }());
     </script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </html>

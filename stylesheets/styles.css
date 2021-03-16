@@ -123,6 +123,21 @@ form > .col {
     color: white;
   }
 }
+#pwdinstr{
+  display:none;
+  background:lightblue; 
+  border: solid, lightblue;
+}
+.error  { 
+  display: block; 
+  font-style: italic; 
+  color: red; 
+}
+#pwditems{
+  text-align: center; 
+  list-style-position:inside;
+}
+         
 
 
 /* SEARCH */
@@ -170,6 +185,10 @@ form > .col {
   margin: auto;
 
 }
+#profile-title{
+  padding: 50px,50px,50px,50px;
+  display: inline-block;
+}
 #profile-friends{
   display: none;
   border: 1px solid grey;
@@ -178,7 +197,12 @@ form > .col {
 .friend-row:nth-child(even){
   background-color:  white;
 }
-
+#NewListBtn{
+  float:right;
+}
+#listcount{
+  color: #059abb;
+}
 
 /* BROWSE */
 .page-title{
