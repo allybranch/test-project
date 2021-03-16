@@ -1,8 +1,11 @@
+/* -- Ally Branch (aab4ad) and Leigh Striffler (lss4de) */
+
+/* Contains CSS Rules used throughout the application */
 
 /* COLORS
-blue: #059abb
-red: #E03E52
-yellow/orange: #FFAE4B;
+  blue: #059abb
+  red: #E03E52
+  yellow/orange: #FFAE4B;
 */
 
 /* GENERAL */
@@ -21,11 +24,7 @@ a:hover {
 }
 
 
-
 /* NAVIGATION BAR */
-#header-search{
-  background-color: white;
-}
 .navbar-toggler-icon{
   color: white;
 }
@@ -39,6 +38,11 @@ a:hover {
 }
 .navbar {
   background-color:  #E03E52;
+}
+#search-button{
+  background-color: #059abb;
+  color: white;
+  margin-right: 30px;
 }
 
 
@@ -56,7 +60,7 @@ a:hover {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.form-signin  button{
+.form-signin button{
   background-color: #E03E52;
   border: none;
 }
@@ -64,13 +68,11 @@ a:hover {
   background-color: #FFAE4B;
 }
 .logo-img {
-  /* border: 5px solid blue; */
   width: 100%;
   margin: -20px auto 0px auto;
   align-self: center;
 }
 .logo-img-container{
-  /* border: 5px solid #C5283DEB; */
   margin: 0px auto 0px auto;
   max-width: 150px;
 }
@@ -89,6 +91,24 @@ form > .row {
 form > .col {
   margin: 0px;
 }
+#pwdinstr{
+  display:none;
+  background:lightblue;
+  border: solid, lightblue;
+}
+.error  {
+  display: block;
+  font-style: italic;
+  color: red;
+}
+#pwditems{
+  text-align: center;
+  list-style-position:inside;
+}
+
+
+/* REGISTER AND LOGIN HEADER */
+/* Medium / Large Screens -- show buttons on the right*/
 @media screen and (min-width: 576px) {
   .active-header-btn, .inactive-header-btn {
     border-radius: 25px;
@@ -107,6 +127,7 @@ form > .col {
     background-color: #E03E52;
   }
 }
+/* Small Screens -- collapsed header */
 @media screen and (max-width: 576px) {
   .active-header-btn, .inactive-header-btn {
     color: white;
@@ -123,22 +144,6 @@ form > .col {
     color: white;
   }
 }
-#pwdinstr{
-  display:none;
-  background:lightblue; 
-  border: solid, lightblue;
-}
-.error  { 
-  display: block; 
-  font-style: italic; 
-  color: red; 
-}
-#pwditems{
-  text-align: center; 
-  list-style-position:inside;
-}
-         
-
 
 /* SEARCH */
 .search-result{
@@ -155,15 +160,12 @@ form > .col {
   margin: 0px 5px;
   display: inline-block;
 }
-.search-result-description{
-  width: 100%;
-}
 .search-result:nth-child(even){
   background-color:  #efefef;
 }
 .add-list-img{
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   color: grey;
 }
 .add-to-list{
@@ -180,39 +182,82 @@ form > .col {
 }
 .profile-container2{
   background-color: #efefef;
-  width: 90%;
+  width: 95%;
   padding: 10px;
   margin: auto;
-
+}
+.friend-row:nth-child(even){
+  background-color:  white;
 }
 #profile-title{
-  padding: 50px,50px,50px,50px;
   display: inline-block;
+  padding-left: 15px;
 }
 #profile-friends{
   display: none;
   border: 1px solid grey;
   padding: 5px;
 }
-.friend-row:nth-child(even){
-  background-color:  white;
-}
-#NewListBtn{
+#new-list-button{
   float:right;
+  color: white;
+  border: none;
+  background-color:  #FFAE4B;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin: 5px;
 }
-#listcount{
-  color: #059abb;
+.profile-button{
+    color: white;
+    border: none;
+    background-color: #059abb;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+.profile-buttons{
+  width: 95%;
+  margin: auto;
 }
 
+
 /* BROWSE */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height: 115px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotatey(-180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+  padding: 5px;
+  background-color: #059abb;
+}
 .page-title{
   padding-left: 20px;
 }
 .list-title{
   padding-left: 20px;
 }
-
-
 .owl-nav{
   margin: 5px !important;
 }
@@ -222,9 +267,7 @@ form > .col {
     left: 0;
     height: 100px;
     width: 15px;
-
 }
-
 .owl-next {
     position: absolute;
     right: 0;
@@ -232,8 +275,6 @@ form > .col {
     height: 100px;
     width: 15px;
 }
-
 .owl-carousel {
   padding: 0px 20px
 }
-

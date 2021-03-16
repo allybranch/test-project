@@ -1,28 +1,22 @@
-
+<!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
 <?php
 $usnm = $pwd = NULL;
 $usnm_mess = $pwd_msg = NULL;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
   if(!empty($_POST['username']))
     $usnm = $_POST['username'];
-
   else
     $name_msg="Please enter your username";
-
   if(!empty($_POST['password']))
     $name = $_POST['password'];
-
   else
     $name_msg="Please enter your password";
 }
 ?>
 
 <!DOCTYPE html>
-
 <html lang='en'>
-
   <head>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,31 +27,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       </style>
     </head>
 
-    <body>
-      
-      <!-- Navigation Bar -->
-      <header>
-        <nav class="navbar navbar-expand-sm">
-          <div class="navbar-brand">
-            <img class=navbar-logo src="images/logo3.png" alt="">
-            <a href="browse.php">GoodFilms</a>
-          </div>
-          <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <a class="active-header-btn justify-content-end navbar-dark" href="login.php">
-                <li class="nav-item">Sign In</li>
-              </a>
-              <a class="inactive-header-btn" href="register.php">
-              <li class="nav-item">
-                Register
-              </li>
-              </a>
-            </div>
-        </nav>
-      <header>
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar navbar-expand-sm">
+        <div class="navbar-brand">
+          <img class=navbar-logo src="images/logo3.png" alt="">
+          <a href="browse.php">GoodFilms</a>
+        </div>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <a class="active-header-btn justify-content-end navbar-dark" href="login.php">
+              <li class="nav-item">Sign In</li>
+            </a>
+            <a class="inactive-header-btn" href="register.php">
+              <li class="nav-item">Register</li>
+            </a>
+          </ul>
+        </div>
+      </nav>
+    <header>
 
       <!-- Main Page -->
     <body id="login-page">
@@ -80,7 +71,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <input  type="checkbox" id="showPassword" /> Show password
                   </div>
                 </div>
-
             </div>
             <div class="text-center">
               <button class="btn btn-lg btn-primary form-btn" id='submit' type="submit">SIGN IN</button>
@@ -90,9 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
     </body>
 
-
     <script>
-
       /* Validate All Fields */
       //validate input + provide relevant error messages
     function validateSubmission(){
@@ -102,9 +90,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       return false;
     }
     function validateUsername(){
-
         var username= document.getElementById('inputUsername').value;
-
         //username needs to be <= 20 characters
         if(username.length <= 20 && username.length > 0 && isNaN(username)){
           document.getElementById('user_msg').value = "";
@@ -116,28 +102,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           return false;
         }
       }
-
-      /* Validate Password */
-      //input validation + relevant error messagess
-      function validatePassword(){
-        var password = document.getElementById('inputPassword').value;
-
-        //passwords need to be larger than 8 characters
-        if(password.length > 8 && is_NaN(password)){
-          document.getElementById('pwd_msg').value = "";
-          return true;
-        }
-        else{//otherwise it's too short
-          document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers.";
-          document.getElementById("inputPassword").value = password;
-          return false;
-        }
+    /* Validate Password */
+    //input validation + relevant error messagess
+    function validatePassword(){
+      var password = document.getElementById('inputPassword').value;
+      //passwords need to be larger than 8 characters
+      if(password.length > 8 && is_NaN(password)){
+        document.getElementById('pwd_msg').value = "";
+        return true;
       }
-
-
-      /* Show / Hide Password  */
-      //anonymous function + event listener
-      (function() {
+      else{//otherwise it's too short
+        document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers.";
+        document.getElementById("inputPassword").value = password;
+        return false;
+      }
+    }
+    /* Show / Hide Password  */
+    //anonymous function + event listener
+    (function() {
       var pwd = document.getElementById("inputPassword");             // get password input
       var show = document.getElementById("showPassword");        // get checkbox input
 
@@ -152,8 +134,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
          }
       }, false);
    }());
-    </script>
+ </script>
+ <!-- Bootstrap and JQuery -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </html>
