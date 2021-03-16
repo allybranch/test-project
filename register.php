@@ -1,4 +1,3 @@
-<!-- http:localhost/project/index.html -->
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -9,6 +8,8 @@
       <link rel="stylesheet" href="stylesheets/styles.css">
       <style>
          .error  { display: block; font-style: italic; color: red; }
+         ul li{text-align: center; list-style-position:inside}
+         #pwdinstr{background:lightblue; border: solid, lightblue;}
       </style>
     </head>
 
@@ -41,9 +42,22 @@
       <!-- Main Page -->
       <div class="main-page-area" >
           <main>
+
+        <!-- Register Form: title, image -->
             <form form method="POST" action="profile.php" class="form-signin" onsubmit="return validateSubmission()">
               <div class="logo-img-container"> <img  class="logo-img" src="images/logo1.png"> </img> </div>
               <h1 class="page-title"> Get Started </h1>
+
+              <!-- Password Instructions --> 
+              <div id='pwdinstr' class='text-center'>
+                Your password must satisfy these requirements:
+                <ul>
+                  <li>Cannot less than 8 characters </li>
+                  <li>Must be a mix of letters, numbers and symbols </li>
+                </ul>
+              </div>
+
+        <!-- Register Form: fields, submit btn -->
               <div class="row g-0">
                 <div class="col">
                   <input type="text" id='firstname' class="form-control" placeholder="First name" aria-label="First name">
@@ -67,7 +81,7 @@
               </div>
               <div class="row g-3">
                   <div class="col">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" onfocus="showPwdInstructions()" required>
                     <span class="error message" id="pwd_msg"></span>
                   </div>
               </div>
@@ -81,14 +95,14 @@
 
     <script>
 
-    function showPwdInstructions(){
-      var lists = document.getElementById("profile-lists");
-      var friends = document.getElementById("profile-friends");
-      lists.style.display = "block";
-      friends.style.display = "none";
-      document.getElementById("profile-title").innerHTML = " <h1> My Lists </h1>";
-    
+    /* Hide Password Instructions*/ 
+    var pwd_instr = document.getElementById('pwdinstr');
+    pwd_instr.style.display="none";
 
+    /*Show Password Instructions*/
+    function showPwdInstructions(){
+      var pwdinstr = document.getElementById("pwdinstr");
+      pwdinstr.style.display = "block";
     }
 
     function validateSubmission(){

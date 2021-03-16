@@ -310,10 +310,6 @@
 
     <!-- Add a Carousel Code Block: Add a new list aka add a row -->
   <script type="text/template" id='carousel'>
-  
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.theme.default.min.css">
 
     <!-- create the new carousel for the row-->
     <h4 class="list-title"> New List </h4>
