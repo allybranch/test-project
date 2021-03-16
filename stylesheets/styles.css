@@ -179,6 +179,7 @@ form > .col {
   background-color:  white;
 }
 
+
 /* BROWSE */
 .page-title{
   padding-left: 20px;
@@ -212,5 +213,3 @@ form > .col {
   padding: 0px 20px
 }
 
-#profile-title{float: left}
-#NewListBtn {float: right}

@@ -81,6 +81,16 @@
 
     <script>
 
+    function showPwdInstructions(){
+      var lists = document.getElementById("profile-lists");
+      var friends = document.getElementById("profile-friends");
+      lists.style.display = "block";
+      friends.style.display = "none";
+      document.getElementById("profile-title").innerHTML = " <h1> My Lists </h1>";
+    
+
+    }
+
     function validateSubmission(){
       if(validateFirstName() && validateLastName() && validatePassword() && validateUsername()){
         return true;
