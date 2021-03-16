@@ -211,3 +211,6 @@ form > .col {
 .owl-carousel {
   padding: 0px 20px
 }
+
+#profile-title{float: left}
+#NewListBtn {float: right}
