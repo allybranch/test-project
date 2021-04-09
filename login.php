@@ -1,5 +1,7 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
 <?php
+  session_start();    // make sessions available
+  $_SESSION['user'] = "";
 $usnm = $pwd = NULL;
 $usnm_mess = $pwd_msg = NULL;
 
@@ -83,7 +85,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
     require('connectdb.php');
-    session_start();    // make sessions available
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       $user = trim($_POST['username']);
@@ -97,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $query = "select username, password from users WHERE username=:user AND password=:pwd LIMIT 1";
       $statement = $db->prepare($query); 
       $statement->bindValue(':user', $user);
-      $statement->bindValue(':', $pwd);
+      $statement->bindValue(':pwd', $pwd);
       $statement->execute();
       $results = $statement->fetchAll();
       $statement->closecursor();

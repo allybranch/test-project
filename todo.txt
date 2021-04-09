@@ -1,0 +1,34 @@
+To Do:
+#####################   
+Edit Account Info
+- add query on form submission to update the user's info in the users table
+
+Friends
+- allow users to add friends (maybe on a new page or on the myprofile page) by searching by username or first and last name
+- maybe create a friends database that just holds pairs of friends (ex - user1, user2)
+- have a user's friends show up under the my friends tab on the my profile page
+
+View other profiles:
+- I think we can use url rewriting to be able to view other profiles. 
+- So if the url would goodfilms/profile/user1 and it would show user 1's profile
+- So you can click on a friend from your friends list and view their profile
+
+Movie data
+- I think it will 
+
+
+Search page
+- need to send some kind of select query to movies/shows table
+- basically just to show and format query results from 
+
+Miscellaneous
+- should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
+- need to take a look at all the requirements and make sure we do everthing / fit all those in
+
+
+Extra / If Time
+###################
+Deploy on GCP
+Use API to get images for movies
+Make add movie to list buttons functional
+Add individual pages for each movie so if I go to goodfilms/movie/title I can see a page with more information on a certain title

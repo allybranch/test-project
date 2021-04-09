@@ -27,6 +27,7 @@
       $statement->execute();
       $results = $statement->fetchAll();
       $statement->closecursor();
+      $name = "";
       foreach ($results as $result)
       {	
          $name = $result['firstname'];
