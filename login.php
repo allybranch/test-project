@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       <style>
         .error  { display: block; font-style: italic; color: red; }
       </style>
-    </head>
+  </head>
 
     <!-- Navigation Bar -->
     <header>
@@ -54,9 +54,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <body id="login-page">
       <div class="main-page-area">
         <main class="form-signin">
-          <form method="POST" id='loginform' action="profile.php" onsubmit="return validateSubmission()">
+          <form method="POST" id='loginform' action="<?php $_SERVER['PHP_SELF'] ?>" onsubmit="return validateSubmission()">
             <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
-            <h1 class="page-title"> Welcome Back! </h1>
+            <h1 class="page-title"> Sign In </h1>
             <div class="row g-3">
               <div class="col">
                 <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
@@ -74,52 +74,83 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </div>
             <div class="text-center">
               <button class="btn btn-lg btn-primary form-btn" id='submit' type="submit">SIGN IN</button>
-            </div
+            </div>
           </form>
         </main>
       </div>
     </body>
 
+    <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
+    <?php 
+    require('connectdb.php');
+    session_start();    // make sessions available
+
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
+      $user = trim($_POST['username']);
+      $pwd = md5(trim($_POST['password']));
+      // set session attributes
+      $_SESSION['user'] = $user; 
+      $_SESSION['pwd'] = $pwd;
+
+    # Check that the username and password combo are correct (that they exist in the users table)
+    global $db;
+      $query = "select username, password from users WHERE username=:user AND password=:pwd LIMIT 1";
+      $statement = $db->prepare($query); 
+      $statement->bindValue(':user', $user);
+      $statement->bindValue(':', $pwd);
+      $statement->execute();
+      $results = $statement->fetchAll();
+      $statement->closecursor();
+      foreach ($results as $result)
+      {	
+         echo $result['user'] . ":" . $result['first'] . "<br/>";
+      }
+    }
+  ?>
+
+
     <script>
+      // Not sure if we want to have this validation stuff on the login page
+      // Since we already do this when they register there's no reason to do it when they log in 
       /* Validate All Fields */
       //validate input + provide relevant error messages
-    function validateSubmission(){
-      if(validateUsername() && validatePassword()){
-        return true;
+      function validateSubmission(){
+        if(validateUsername() && validatePassword()){
+          return true;
+        }
+        return false;
       }
-      return false;
-    }
-    function validateUsername(){
-        var username= document.getElementById('inputUsername').value;
-        //username needs to be <= 20 characters
-        if(username.length <= 20 && username.length > 0 && isNaN(username)){
-          document.getElementById('user_msg').value = "";
+      function validateUsername(){
+          var username= document.getElementById('inputUsername').value;
+          //username needs to be <= 20 characters
+          if(username.length <= 20 && username.length > 0 && isNaN(username)){
+            document.getElementById('user_msg').value = "";
+            return true;
+          }
+          else{//otherwise it's too short
+            document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters, and it cannot only be numbers.";
+            document.getElementById("inputUsername").value = username;
+            return false;
+          }
+        }
+      /* Validate Password */
+      //input validation + relevant error messagess
+      function validatePassword(){
+        var password = document.getElementById('inputPassword').value;
+        //passwords need to be larger than 8 characters
+        if(password.length > 8 && is_NaN(password)){
+          document.getElementById('pwd_msg').value = "";
           return true;
         }
         else{//otherwise it's too short
-          document.getElementById("user_msg").innerHTML = "Your username cannot be longer than 20 characters, and it cannot only be numbers.";
-          document.getElementById("inputUsername").value = username;
+          document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers.";
+          document.getElementById("inputPassword").value = password;
           return false;
         }
       }
-    /* Validate Password */
-    //input validation + relevant error messagess
-    function validatePassword(){
-      var password = document.getElementById('inputPassword').value;
-      //passwords need to be larger than 8 characters
-      if(password.length > 8 && is_NaN(password)){
-        document.getElementById('pwd_msg').value = "";
-        return true;
-      }
-      else{//otherwise it's too short
-        document.getElementById("pwd_msg").innerHTML = "Your password cannot be shorter than 8 characters, and it cannot only be numbers.";
-        document.getElementById("inputPassword").value = password;
-        return false;
-      }
-    }
-    /* Show / Hide Password  */
-    //anonymous function + event listener
-    (function() {
+      /* Show / Hide Password  */
+      //anonymous function + event listener
+      (function() {
       var pwd = document.getElementById("inputPassword");             // get password input
       var show = document.getElementById("showPassword");        // get checkbox input
 
@@ -133,8 +164,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             alert("Cannot switch type");
          }
       }, false);
-   }());
- </script>
+      }());
+    </script>
  <!-- Bootstrap and JQuery -->
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

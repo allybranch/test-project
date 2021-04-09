@@ -11,10 +11,30 @@
       <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.theme.default.min.css">
   </head>
   <body>
-    <?php include('header.html')?>
+    <?php 
+      session_start();    // make sessions available
+      // check that user if logged in, if not send them back to the login page
+      if ($_SESSION['user']==""){
+        header('Location: login.php');
+      }
+      require('connectdb.php');
+      include('header.html');
+      global $db;
+      // get user info from the database
+      $query = "select * from users WHERE username=:user";
+      $statement = $db->prepare($query);
+      $statement->bindValue(':user', $_SESSION['user']);
+      $statement->execute();
+      $results = $statement->fetchAll();
+      $statement->closecursor();
+      foreach ($results as $result)
+      {	
+         $name = $result['firstname'];
+      }
+    ?>
     <div class="main-page-area">
     <div class='profile-container1'>
-    <h1 class='text-center' id='listcount'> Welcome Back! </h1>
+    <h1 class='text-center' id='listcount'> Welcome Back <?php echo $name?>! </h1>
     <!-- Toggle Buttons -->
     <div class="profile-buttons">
       <button class="profile-button" onclick="ViewLists()">My Lists</button>
@@ -172,6 +192,12 @@
       </div>
     </div>
   </body>
+
+  <?php 
+
+
+  ?>
+
   <!-- JQuery and Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

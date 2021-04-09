@@ -546,7 +546,6 @@
         loop:true,
         margin:5,
         nav:true,
-        autoHeight:true,
         responsive:{
             0:{
                 items:1
