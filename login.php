@@ -102,9 +102,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $statement->execute();
       $results = $statement->fetchAll();
       $statement->closecursor();
-      foreach ($results as $result)
-      {	
-         echo $result['user'] . ":" . $result['first'] . "<br/>";
+      if (count($results) > 0){
+        $_SESSION['user'] = $user; 
+        $_SESSION['pwd'] = $pwd;
+        header('Location: myprofile.php');
       }
     }
   ?>

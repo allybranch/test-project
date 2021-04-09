@@ -14,21 +14,25 @@ View other profiles:
 - So you can click on a friend from your friends list and view their profile
 
 Movie data
-- I think it will 
-
+- I think we can probably just use the IMDB datasets for now (https://www.imdb.com/interfaces/)
+- They have basic info for titles (name, year, genre), but we'll have to use an API or something else later if we want descriptions or images
+- I'm thinking we can take the basics file and basically turn that into a "titles" table in our database
+- The IMDB file is like insanely large so we'll definitely have to trim that down somehow (I think it has Shorts and TV episodes which we probably don't need) or find another datasource
 
 Search page
 - need to send some kind of select query to movies/shows table
-- basically just to show and format query results from 
+- then should just basically neeed to show and format query results
 
 Miscellaneous
 - should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
 - need to take a look at all the requirements and make sure we do everthing / fit all those in
+- add error messages for when username and password not found in database 
+- add error messages for register when username is already being used
 
 
 Extra / If Time
 ###################
 Deploy on GCP
-Use API to get images for movies
+Use API to get images for movies (https://imdb-api.com/api)
 Make add movie to list buttons functional
 Add individual pages for each movie so if I go to goodfilms/movie/title I can see a page with more information on a certain title
