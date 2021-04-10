@@ -18,10 +18,10 @@
 /******************************/
 // connecting to DB on XAMPP (local)
 
-$username = '';
-$password = '';
-$host = '';
-$dbname = '';
+$username = 'WebAppProject';
+$password = 'GoodF!lms1358';
+$host = 'localhost:3306';
+$dbname = 'webappproject';
 
 
 /******************************/
@@ -45,5 +45,4 @@ catch (Exception $e)       // handle any type of exception
    $error_message = $e->getMessage();
    echo "<p>Error message: $error_message </p>";
 }
-
 ?>

@@ -1,21 +1,4 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<?php
-  session_start();    // make sessions available
-  $_SESSION['user'] = "";
-$usnm = $pwd = NULL;
-$usnm_mess = $pwd_msg = NULL;
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  if(!empty($_POST['username']))
-    $usnm = $_POST['username'];
-  else
-    $name_msg="Please enter your username";
-  if(!empty($_POST['password']))
-    $name = $_POST['password'];
-  else
-    $name_msg="Please enter your password";
-}
-?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -59,6 +42,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           <form method="POST" id='loginform' action="<?php $_SERVER['PHP_SELF'] ?>" onsubmit="return validateSubmission()">
             <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
             <h1 class="page-title"> Sign In </h1>
+
+            <!-- Error Message -->
+        <div id='errorm' class='text-center' >
+            Username and password were not found. Please try again.
+        </div>
+
+
             <div class="row g-3">
               <div class="col">
                 <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
@@ -82,6 +72,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
     </body>
 
+    <script>
+
+      /*Show Error Message */
+    function showErrorBox(){
+
+var errorbox = document.getElementById("errorm");
+errorbox.style.display = "block";
+}
+    </script>
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
     require('connectdb.php');
@@ -107,11 +106,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['pwd'] = $pwd;
         header('Location: myprofile.php');
       }
+      else{ //username and password not found
+        echo "<script>  showErrorBox(); </script>";
+        echo 'hi';
+        //"<script> showErrorBox() </script>"
+      }
     }
   ?>
 
 
     <script>
+
+    /*Show Error Message */
+    function showErrorBox(){
+
+      var errorbox = document.getElementById("errorm");
+      errorbox.style.display = "block";
+    }
       // Not sure if we want to have this validation stuff on the login page
       // Since we already do this when they register there's no reason to do it when they log in 
       /* Validate All Fields */

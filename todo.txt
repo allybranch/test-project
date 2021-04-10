@@ -1,7 +1,10 @@
 To Do:
 #####################   
-Edit Account Info
+Edit Account Info -- leigh
 - add query on form submission to update the user's info in the users table
+--button next to eaach field. submits the change in the input box
+--can't see password. but you can change it. enter new password instead. check if it matches the old.
+--use get[] in the tags to display values if they're in teh db... they hsould be they have an acct but yolo
 
 Friends
 - allow users to add friends (maybe on a new page or on the myprofile page) by searching by username or first and last name
@@ -19,15 +22,18 @@ Movie data
 - I'm thinking we can take the basics file and basically turn that into a "titles" table in our database
 - The IMDB file is like insanely large so we'll definitely have to trim that down somehow (I think it has Shorts and TV episodes which we probably don't need) or find another datasource
 
-Search page
+Search page -- leigh
 - need to send some kind of select query to movies/shows table
 - then should just basically neeed to show and format query results
 
-Miscellaneous
+Miscellaneous -- leigh
 - should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
 - need to take a look at all the requirements and make sure we do everthing / fit all those in
-- add error messages for when username and password not found in database 
 - add error messages for register when username is already being used
+
+
+done
+- add error messages for when username and password not found in database
 
 
 Extra / If Time

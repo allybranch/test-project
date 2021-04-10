@@ -20,7 +20,7 @@
               <!-- Form Fields -->
               <div class="row g-3">
                   <div class="col">
-                    <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                    <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required disabled>
                     <span name="error" class="error message" id="user_msg"> </span>
                   </div>
               </div>

@@ -1,5 +1,5 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -89,10 +89,11 @@
     </div>
   </body>
 
-  <!-- This PHP checks that the username isn't already in use and "registers" the user by adding them to the users table
+  <!-- This PHP checks that the username isn't already in use and "registers" the user by adding them to the users table--> 
   <?php 
     require('connectdb.php');
-    session_start();    // make sessions available
+     
+        // make sessions available
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       // Get User info from form
       $first = trim($_POST['first']);
@@ -112,8 +113,10 @@
 
       // Check that the query doesn't return anything
       if (count($results) == 0){
-        // add new user to the users table
+    
+        //add new user to the users table
         $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
+        //$query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES 'ooo','ooooooooo','ooooo', oooooo, 'lss4de@virginia.edu' ";
         $statement = $db->prepare($query); 
         $statement->bindValue(':user', $user);
         $statement->bindValue(':pwd', $pwd);
@@ -128,10 +131,13 @@
          //redirect to profile page
         header('Location: myprofile.php');
       }
+      else { //username already in use
+        
+      }
     }
   ?>
 
-  <script>
+  <script> 
     /*Show Password Instructions*/
     function showPwdInstructions(){
       var pwdinstr = document.getElementById("pwdinstr");

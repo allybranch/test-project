@@ -105,6 +105,11 @@ form > .col {
   text-align: center;
   list-style-position:inside;
 }
+#errorm{
+  display:none;
+  background:lightpink;
+  border: solid,red;
+}
 
 
 /* REGISTER AND LOGIN HEADER */

@@ -28,10 +28,7 @@
       $results = $statement->fetchAll();
       $statement->closecursor();
       $name = "";
-      foreach ($results as $result)
-      {	
-         $name = $result['firstname'];
-      }
+     
     ?>
     <div class="main-page-area">
     <div class='profile-container1'>
