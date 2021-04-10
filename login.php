@@ -72,6 +72,7 @@
       </div>
     </body>
 
+
     <script>
 
       /*Show Error Message */
@@ -83,6 +84,8 @@ errorbox.style.display = "block";
     </script>
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
+    session_start();
+    $_SESSION['user'] = ""; 
     require('connectdb.php');
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
@@ -103,13 +106,11 @@ errorbox.style.display = "block";
       $statement->closecursor();
       if (count($results) > 0){
         $_SESSION['user'] = $user; 
-        $_SESSION['pwd'] = $pwd;
+        echo $_SESSION['user'];
         header('Location: myprofile.php');
       }
       else{ //username and password not found
         echo "<script>  showErrorBox(); </script>";
-        echo 'hi';
-        //"<script> showErrorBox() </script>"
       }
     }
   ?>
