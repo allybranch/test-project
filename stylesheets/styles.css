@@ -201,7 +201,8 @@ form > .col {
 #profile-friends{
   display: none;
   border: 1px solid grey;
-  padding: 5px;
+  margin-left: 15px;
+
 }
 #new-list-button{
   float:right;
@@ -212,6 +213,19 @@ form > .col {
   padding: 5px 10px;
   font-weight: bold;
   margin: 5px;
+}
+#new-friend-button{
+  float:right;
+  color: white;
+  border: none;
+  background-color:  #FFAE4B;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-weight: bold;
+  display: none;
+}
+#add-friend-form{
+  display: none;
 }
 .profile-button{
     color: white;

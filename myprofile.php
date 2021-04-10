@@ -12,7 +12,8 @@
   </head>
   <body>
     <?php 
-      session_start();    // make sessions available
+      session_start(); 
+      // make sessions available
       // check that user if logged in, if not send them back to the login page
       if ($_SESSION['user']==""){
         header('Location: login.php');
@@ -28,7 +29,10 @@
       $results = $statement->fetchAll();
       $statement->closecursor();
       $name = "";
-     
+      foreach ($results as $result)
+      {	
+         $name = $result['firstname'];
+      }
     ?>
     <div class="main-page-area">
     <div class='profile-container1'>
@@ -43,6 +47,7 @@
         <h2 > My Lists </h2>
       </div>
       <button id="new-list-button" onclick="newList()">New List</button>
+      <button id="new-friend-button" onclick="addFriend()">Add Friend</button>
       <!-- User Title Lists -->
       <div id='profile-lists'>
         <h4 class="list-title"> Currently Watching </h4>
@@ -183,17 +188,59 @@
       </div>
       <!-- Friends List -->
       <div id="profile-friends">
-          <div class="friend-row"><h4>Friend 1 </h4></div>
-          <div class="friend-row"><h4>Friend 2 </h4></div>
-          <div class="friend-row"><h4>Friend 3 </h4></div>
-          <div class="friend-row"><h4>Friend 4 </h4></div>
+        <form id="add-friend-form" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+          <div class="row">
+            <div class="col">
+              <input type="text" name='friendusername' id="friendUsername" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="col">
+              <button type='submit' class="btn btn-lg btn-primary form-btn" id='save'>Add </button>
+            </div>
+          </div>
+        </form>
+        <?php
+          $query = "select * from friends WHERE username=:username";
+          $statement = $db->prepare($query);
+          $statement->bindValue(':username', $_SESSION['user']);
+          $statement->execute();
+          $results = $statement->fetchAll();
+          $statement->closecursor();
+          foreach ($results as $result)
+          {	
+              echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
+              echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";    
+          }
+        ?>
       </div>
     </div>
   </body>
 
   <?php 
 
-
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['friendusername']) > 0){
+      # Check that the username and password combo are correct (that they exist in the users table)
+      global $db;
+      $friendusername = trim($_POST['friendusername']);
+      $query = "select * from users WHERE username=:user";
+      $statement = $db->prepare($query);
+      $statement->bindValue(':user', $friendusername);
+      $statement->execute();
+      $results = $statement->fetchAll();
+      $statement->closecursor();
+      $first = $last = "";
+      foreach ($results as $result)
+      {	
+        $first = $result['firstname'];
+        $last = $result['lastname'];
+      }
+      $query = "INSERT INTO `friends` (`username`, `frienduser`, `friendfirst`, `friendlast`) VALUES (:user, :friend, :friendfirst, :friendlast)";
+      $statement = $db->prepare($query); 
+      $statement->bindValue(':user', $_SESSION['user'] );
+      $statement->bindValue(':friend', $friendusername);
+      $statement->bindValue(':friendfirst', $first);
+      $statement->bindValue(':friendlast', $last);
+      $statement->execute();
+      }
   ?>
 
   <!-- JQuery and Bootstrap -->
@@ -243,6 +290,8 @@
       document.getElementById("profile-title").innerHTML = "<h2> My Lists </h2>";
       listBtn=document.getElementById("new-list-button");
       listBtn.style.display='block';
+      friendBtn=document.getElementById("new-friend-button");
+      friendBtn.style.display='none';
     }
     function ViewFriends(){
       var lists = document.getElementById("profile-lists");
@@ -253,6 +302,12 @@
       friends.style.display = "block";
       listBtn=document.getElementById("new-list-button");
       listBtn.style.display='none';
+      friendBtn=document.getElementById("new-friend-button");
+      friendBtn.style.display='block';
+    }
+    function addFriend(){
+      friendForm=document.getElementById("add-friend-form");
+      friendForm.style.display='block';      
     }
      /* Keep track of number of lists */
     var numLists=3; //list counter
