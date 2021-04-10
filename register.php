@@ -1,50 +1,50 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<!-- This PHP checks that the username isn't already in use and "registers" the user by adding them to the users table--> 
-<?php     
-require('connectdb.php');
-      // make sessions available
-  if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
-    // Get User info from form
-    $first = trim($_POST['first']);
-    $last = trim($_POST['last']);
-    $email = trim($_POST['email']);
-    $user = trim($_POST['username']);
-    $pwd = md5(trim($_POST['password']));
+  <!-- This PHP checks that the username isn't already in use and "registers" the user by adding them to the users table--> 
+  <?php     
+  require('connectdb.php');
+        // make sessions available
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
+      // Get User info from form
+      $first = trim($_POST['first']);
+      $last = trim($_POST['last']);
+      $email = trim($_POST['email']);
+      $user = trim($_POST['username']);
+      $pwd = md5(trim($_POST['password']));
 
-    // See if the username is already being used (it should NOT exist in the users table)
-    global $db;
-      $query = "select username from users WHERE username=:user";
-      $statement = $db->prepare($query); 
-      $statement->bindValue(':user', $user);
-      $statement->execute();
-      $results = $statement->fetchAll();
-      $statement->closecursor();
+      // See if the username is already being used (it should NOT exist in the users table)
+      global $db;
+        $query = "select username from users WHERE username=:user";
+        $statement = $db->prepare($query); 
+        $statement->bindValue(':user', $user);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closecursor();
 
-    // Check that the query doesn't return anything
-    if (count($results) == 0){
-  
-      //add new user to the users table
-      $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
-      //$query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES 'ooo','ooooooooo','ooooo', oooooo, 'lss4de@virginia.edu' ";
-      $statement = $db->prepare($query); 
-      $statement->bindValue(':user', $user);
-      $statement->bindValue(':pwd', $pwd);
-      $statement->bindValue(':first', $first);
-      $statement->bindValue(':last', $last);
-      $statement->bindValue(':email', $email);
-      $statement->execute();
-      $statement->closecursor();
-      // set session attributes
-      $_SESSION['user'] = $user; 
-      $_SESSION['pwd'] = $pwd;
-        //redirect to profile page
-      header('Location: myprofile.php');
+      // Check that the query doesn't return anything
+      if (count($results) == 0){
+    
+        //add new user to the users table
+        $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
+        //$query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES 'ooo','ooooooooo','ooooo', oooooo, 'lss4de@virginia.edu' ";
+        $statement = $db->prepare($query); 
+        $statement->bindValue(':user', $user);
+        $statement->bindValue(':pwd', $pwd);
+        $statement->bindValue(':first', $first);
+        $statement->bindValue(':last', $last);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closecursor();
+        // set session attributes
+        $_SESSION['user'] = $user; 
+        $_SESSION['pwd'] = $pwd;
+         //redirect to profile page
+        header('Location: myprofile.php');
+      }
+      else if (count($results) > 0){ //username already in use
+        echo "<script> showErrorBox(); </script>";
+      }
     }
-    else if (count($results) > 0){ //username already in use
-      echo "<script> showErrorBox(); </script>";
-    }
-  }
-?>
+  ?>
 
 <!DOCTYPE html>
 <html lang='en'>

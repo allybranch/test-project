@@ -85,15 +85,8 @@
     </script>
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
-<<<<<<< HEAD
   
   require('connectdb.php');
-=======
-    session_start();
-    $_SESSION['user'] = ""; 
-    require('connectdb.php');
-
->>>>>>> 11603ab88cf7996eed2fb29b28eaff9fa67ad084
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       $user = trim($_POST['username']);
       $pwd = md5(trim($_POST['password']));
