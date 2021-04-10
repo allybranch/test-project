@@ -85,7 +85,8 @@
     </script>
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
-  require('connectdb.php');
+  
+    require('connectdb.php');
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       $user = trim($_POST['username']);
