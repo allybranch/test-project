@@ -29,11 +29,11 @@ Search page -- leigh
 Miscellaneous -- leigh
 - should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
 - need to take a look at all the requirements and make sure we do everthing / fit all those in
-- add error messages for register when username is already being used
 
 
 done
 - add error messages for when username and password not found in database
+- add error messages for register when username is already being used
 
 
 Extra / If Time

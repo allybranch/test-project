@@ -1,6 +1,6 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-
 <!DOCTYPE html>
+
 <html lang='en'>
   <head>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
@@ -37,13 +37,14 @@
 
       <!-- Main Page -->
     <body id="login-page">
+    <?php session_start(); ?> <!-- session here -->
       <div class="main-page-area">
         <main class="form-signin">
           <form method="POST" id='loginform' action="<?php $_SERVER['PHP_SELF'] ?>" onsubmit="return validateSubmission()">
             <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
             <h1 class="page-title"> Sign In </h1>
 
-            <!-- Error Message -->
+            <!-- Error Message --> 
         <div id='errorm' class='text-center' >
             Username and password were not found. Please try again.
         </div>
@@ -76,15 +77,15 @@
 
       /*Show Error Message */
     function showErrorBox(){
+      var errorbox = document.getElementById("errorm");
+      errorbox.style.display = "block";
+    }
 
-var errorbox = document.getElementById("errorm");
-errorbox.style.display = "block";
-}
     </script>
     <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
     <?php 
-    require('connectdb.php');
-
+  
+  require('connectdb.php');
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       $user = trim($_POST['username']);
       $pwd = md5(trim($_POST['password']));
@@ -108,8 +109,6 @@ errorbox.style.display = "block";
       }
       else{ //username and password not found
         echo "<script>  showErrorBox(); </script>";
-        echo 'hi';
-        //"<script> showErrorBox() </script>"
       }
     }
   ?>
