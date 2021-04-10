@@ -25,7 +25,6 @@
     
         //add new user to the users table
         $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
-        //$query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES 'ooo','ooooooooo','ooooo', oooooo, 'lss4de@virginia.edu' ";
         $statement = $db->prepare($query); 
         $statement->bindValue(':user', $user);
         $statement->bindValue(':pwd', $pwd);
@@ -143,11 +142,6 @@
   </body>
 
   <script>
-    /*Show Error Message */
-    function showErrorBox(){
-      var errorbox = document.getElementById("errorm");
-      errorbox.style.display = "block";
-    }
 
     /*Show Error Message */
     function showErrorBox(){
