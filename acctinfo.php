@@ -170,15 +170,18 @@
     {
     global $db;//link to the outside variable
 
-    //no input validation
-    $pass=$_GET['password']; //retrieve the pwd value
-    $query="UPDATE users SET password=:pwd WHERE username=:user";
-    $statement= $db->prepare($query);
-    $statement->bindValue(':user', $_SESSION['user']);
-    $statement->bindValue(':pwd',md5($pass));//hash the pwd
-    $statement->execute();
-    $statement->closeCursor();
-    $_SESSION['pwd']=md5(trim($pass)); //update the session
+    
+    if(isset($_GET['password'])){
+        $pass=$_GET['password']; //retrieve the pwd value
+        $query="UPDATE users SET password=:pwd WHERE username=:user";
+        $statement= $db->prepare($query);
+        $statement->bindValue(':user', $_SESSION['user']);
+        $statement->bindValue(':pwd',md5($pass));//hash the pwd
+        $statement->execute();
+        $statement->closeCursor();
+        $_SESSION['pwd']=md5(trim($pass)); //update the session
+    }
+   
 
 
     // //check whether the new password matches the old
@@ -206,11 +209,15 @@
         $query="UPDATE users SET lastname=:lname WHERE username=:user";
         $statement= $db->prepare($query);
         $statement->bindValue(':user', $_SESSION['user']);
-        $pass=$_GET['lastname']; 
-        $statement->bindValue(':lname',$pass);
-        $statement->execute();
-        $statement->closeCursor();
-        getLname(); //update the screen
+
+        if(isset($_GET['lastname'])){
+            $pass=$_GET['lastname']; 
+            $statement->bindValue(':lname',$pass);
+            $statement->execute();
+            $statement->closeCursor();
+            getLname(); //update the screen
+        }
+     
     }
   
     function updateFname(){
@@ -219,11 +226,15 @@
         $query="UPDATE users SET firstname=:fname WHERE username=:user";
         $statement= $db->prepare($query);
         $statement->bindValue(':user', $_SESSION['user']);
-        $pass=$_GET['firstname']; 
-        $statement->bindValue(':fname',$pass);
-        $statement->execute();
-        $statement->closeCursor();
-        getFname(); //update the screen
+
+        if(isset($_GET['firstname'])){
+            $pass=$_GET['firstname']; 
+            $statement->bindValue(':fname',$pass);
+            $statement->execute();
+            $statement->closeCursor();
+            getFname(); //update the screen
+        }
+        
     }
 
     function updateEmail(){
@@ -232,11 +243,15 @@
         $query="UPDATE users SET email=:email WHERE username=:user";
         $statement= $db->prepare($query);
         $statement->bindValue(':user', $_SESSION['user']);
-        $pass=$_GET['email']; 
-        $statement->bindValue(':email',$pass);
-        $statement->execute();
-        $statement->closeCursor();
-        getEmail(); //update the screen
+
+        if(isset($_GET['email'])){
+            $pass=$_GET['email']; 
+            $statement->bindValue(':email',$pass);
+            $statement->execute();
+            $statement->closeCursor();
+            getEmail(); //update the screen
+        }
+        
     }
   
   ?>

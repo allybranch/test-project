@@ -24,21 +24,23 @@ Search page -- leigh
 Miscellaneous -- leigh
 - should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
 - need to take a look at all the requirements and make sure we do everthing / fit all those in
+- adjust the size of the input boxes in acct
 
-*********leigh: i made the table not allowed to have null values anwyhre so it doesn't let you submit them
+*********leigh: i made the table not allowed to have null values anwyhre but you can still submit???????
 
 done
 
 Miscellaneous -- leigh
 - add error messages for when username and password not found in database
 - add error messages for register when username is already being used
--- adjust the size of the input boxes in acct
+
 
 Edit Account Info -- leigh
-- add query on form submission to update the user's info in the users table
---button next to eaach field. submits the change in the input box
---can't see password. but you can change it. enter new password instead. check if it matches the old.
---use get[] in the tags to display values if they're in teh db... they hsould be they have an acct but yolo
+- used isset() to make sure theres values to pull from db for acct
+- display the user info in the input boxes
+- update the db w the chosen info
+- don't allow the username to be changed
+- you can see the password you're typing in the box 
 
 Extra / If Time
 ###################

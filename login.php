@@ -117,13 +117,6 @@
 
 
     <script>
-
-    /*Show Error Message */
-    function showErrorBox(){
-
-      var errorbox = document.getElementById("errorm");
-      errorbox.style.display = "block";
-    }
       // Not sure if we want to have this validation stuff on the login page
       // Since we already do this when they register there's no reason to do it when they log in 
       /* Validate All Fields */
