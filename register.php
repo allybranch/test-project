@@ -143,13 +143,6 @@
 
   <script>
 
-    /*Show Error Message */
-    function showErrorBox(){
-      console.log('yes');
-      var errorbox = document.getElementById("errorm");
-      errorbox.style.display = "block";
-    }
-
     /*Show Password Instructions*/
     function showPwdInstructions(){
       var pwdinstr = document.getElementById("pwdinstr");
