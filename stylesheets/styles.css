@@ -188,7 +188,9 @@ form > .col {
 .add-to-list:hover{
   box-shadow: 2px 2px 2px #888888;
 }
-
+.rating{
+  display: inline-flex;
+}
 
 
 /* PROFILE */
