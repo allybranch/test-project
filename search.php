@@ -17,7 +17,7 @@
 
       <div class="main-page-area">
 
-        <h1 id='header'> Search Results </h1>
+        <h1> Search Results </h1>
         <div class="search-results">
 
           <!-- search results tag is open and closed after displaying the results later -->
@@ -27,7 +27,7 @@
     
     require('connectdb.php');
  
-    if (isset($_POST['sbar'])){//if a given title, go get the matching results
+    if (isset($_POST['sbar'])){//if there's a given title, go get the matching results
       global $db;
       $query = "select * from titles WHERE name LIKE :title ";
       $statement = $db->prepare($query); 
@@ -40,27 +40,19 @@
       $year="";
       $type="";
       $rating="";
-      $desc="";
-      echo "<script> document.getElementById('header').innerHTML+= '(" . count($results) . ")';</script>";
       foreach ($results as $result)
       {	
          $name = $result['name'];
          $year=$result['year'];
          $type=$result['type'];
          $rating=$result['rating'];
-         $desc=$result['desc'];
          echo '<div class="search-result"> <h3 class="search-result-title"> ' . $name . '</h3>' . 
-                '<h4 class = "search-result-type"> (' . $year .') </h4> 
-                <div class="rating"> 
-                <img src="images/star.png" class="add-list-img"> </img> <h4> ' . $rating . '</h4> /10  
-                </div>
-               
-                <button  class="add-to-list"><img src="images/add.png" class="add-list-img"></img> Add to List </button>
+                '<h4 class = "search-result-type"> (' . $year .') </h4>
+                   <button  class="add-to-list"><img src="images/add.png" class="add-list-img"></img> Add to List </button>
 
                 <div class="search-result-description">
-                    <p>' . $desc .  '</p>
+                    <p> description </p>
                 </div>
-
               </div> ';
       }
     }

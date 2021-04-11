@@ -81,9 +81,28 @@
          </div>
       </div>
 
+    <script>
+        /* Keep Customer Info */
+        //eventually get it from the register page using php
+        function saveInfo(){
+            var firstname = document.getElementById('firstname').value;
+            document.getElementById('firstname').value= firstname;
+            var lastname = document.getElementById('lastname').value;
+            document.getElementById('lastname').value= lastname;
+            var usr = document.getElementById('inputUsername').value;
+            document.getElementById('inputUsername').value= usr;
+            var pwd = document.getElementById('inputPassword').value;
+            document.getElementById('inputPassword').value= pwd;
+            var email = document.getElementById('inputEmail').value;
+            document.getElementById('inputEmail').value= email;
+            return false; //until we actually have this info in a db
+        }
+    </script>
+
     <!-- Bootstrap and JQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
 
   <?php 
    
