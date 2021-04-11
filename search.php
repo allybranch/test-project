@@ -11,53 +11,58 @@
       <link rel="stylesheet" href="stylesheets/styles.css">
     </head>
     <body>
-      <?php include('header.html') ?>
+      <?php include('header.html');
+      session_start();
+      ?>
+
       <div class="main-page-area">
+
         <h1> Search Results </h1>
         <div class="search-results">
-          <div class="search-result">
-            <h3 class="search-result-title">Result Title </h3>
-            <h4 class = "search-result-type"> (Year) </h4>
-            <div class="add-to-list">
-              <img src="images/add.png" class="add-list-img"></img> Add to List
-            </div>
-            <div class="search-result-description">
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  </p>
-            </div>
-          </div>
-          <div class="search-result">
-            <h3 class="search-result-title">Result Title </h3>
-            <h4 class = "search-result-type"> (Year) </h4>
-            <div class="add-to-list">
-              <img src="images/add.png" class="add-list-img"></img> Add to List
-            </div>
-            <div class="search-result-description">
-              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque eleifend donec pretium vulputate. Porttitor rhoncus dolor purus non. Ullamcorper dignissim cras tincidunt lobortis. Duis ultricies lacus sed turpis tincidunt id. Viverra nibh cras pulvinar mattis nunc. Sed odio morbi quis commodo odio. </p>
-            </div>
-          </div>
-          <div class="search-result">
-            <h3 class="search-result-title">Result Title </h3>
-            <h4 class = "search-result-type"> (Year) </h4>
-            <div class="add-to-list">
-              <img src="images/add.png" class="add-list-img"></img> Add to List
-            </div>
-            <div class="search-result-description">
-              <p> Dolor sit amet consectetur adipiscing elit ut aliquam. Interdum velit laoreet id donec ultrices tincidunt arcu non sodales. At volutpat diam ut venenatis tellus in metus. Sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque. Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies. </p>
-            </div>
-          </div>
-          <div class="search-result">
-            <h3 class="search-result-title">Result Title </h3>
-            <h4 class = "search-result-type"> (Year) </h4>
-            <div class="add-to-list">
-              <img src="images/add.png" class="add-list-img"></img> Add to List
-            </div>
-            <div class="search-result-description">
-              <p> Dolor sit amet consectetur adipiscing elit ut aliquam. Interdum velit laoreet id donec ultrices tincidunt arcu non sodales. At volutpat diam ut venenatis tellus in metus. Sit amet consectetur adipiscing elit duis. Arcu risus quis varius quam quisque. Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies. </p>
-            </div>
-          </div>
-        </div>
-      </div>
+
+          <!-- search results tag is open and closed after displaying the results later -->
     </body>
+
+    <?php 
+    
+    require('connectdb.php');
+ 
+    if (isset($_POST['sbar'])){//if there's a given title, go get the matching results
+      global $db;
+      $query = "select * from titles WHERE name LIKE :title ";
+      $statement = $db->prepare($query); 
+      $statement->bindValue(':title', '%' . $_POST['sbar'] . '%');
+      $statement->execute();
+      $results = $statement->fetchAll();
+      $statement->closeCursor();
+
+      $name = "";
+      $year="";
+      $type="";
+      $rating="";
+      foreach ($results as $result)
+      {	
+         $name = $result['name'];
+         $year=$result['year'];
+         $type=$result['type'];
+         $rating=$result['rating'];
+         echo '<div class="search-result"> <h3 class="search-result-title"> ' . $name . '</h3>' . 
+                '<h4 class = "search-result-type"> (' . $year .') </h4>
+                   <button  class="add-to-list"><img src="images/add.png" class="add-list-img"></img> Add to List </button>
+
+                <div class="search-result-description">
+                    <p> description </p>
+                </div>
+              </div> ';
+      }
+    }
+
+    else{//there's no given title. give a default screen
+
+    }
+
+    echo "</div>"; //search results tag is open until now so we get the box border around the results
+    ?>
     <!-- Jquery and Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

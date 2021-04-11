@@ -49,7 +49,6 @@
             Username and password were not found. Please try again.
         </div>
 
-
             <div class="row g-3">
               <div class="col">
                 <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
@@ -73,7 +72,6 @@
       </div>
     </body>
 
-
     <script>
 
       /*Show Error Message */
@@ -96,7 +94,7 @@
       $_SESSION['pwd'] = $pwd;
 
     # Check that the username and password combo are correct (that they exist in the users table)
-    global $db;
+      global $db;
       $query = "select username, password from users WHERE username=:user AND password=:pwd LIMIT 1";
       $statement = $db->prepare($query); 
       $statement->bindValue(':user', $user);

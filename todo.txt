@@ -17,22 +17,23 @@ Movie data
 - I'm thinking we can take the basics file and basically turn that into a "titles" table in our database
 - The IMDB file is like insanely large so we'll definitely have to trim that down somehow (I think it has Shorts and TV episodes which we probably don't need) or find another datasource
 
-Search page -- leigh
-- need to send some kind of select query to movies/shows table
-- then should just basically neeed to show and format query results
-
 Miscellaneous -- leigh
 - should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
 - need to take a look at all the requirements and make sure we do everthing / fit all those in
 - adjust the size of the input boxes in acct
+- how to stop the submission of null values?
+- leigh tried to fix the dropdown positioning but it didn't work lol
+- we need to decide how we want to display rating ie percent, stars, etc.
+- add description field?
+- add image somehow?
 
-*********leigh: i made the table not allowed to have null values anwyhre but you can still submit???????
 
-done
+done:
 
 Miscellaneous -- leigh
 - add error messages for when username and password not found in database
 - add error messages for register when username is already being used
+- format the add friend button
 
 
 Edit Account Info -- leigh
@@ -41,6 +42,12 @@ Edit Account Info -- leigh
 - update the db w the chosen info
 - don't allow the username to be changed
 - you can see the password you're typing in the box 
+
+Search page -- leigh
+- need to send some kind of select query to movies/shows table
+- then should just basically neeed to show and format query results
+- formatted the add to list and made it a button. added a hover shadow. 
+- added hover black to search button
 
 Extra / If Time
 ###################

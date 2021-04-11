@@ -194,7 +194,7 @@
               <input type="text" name='friendusername' id="friendUsername" class="form-control" placeholder="Username" required>
             </div>
             <div class="col">
-              <button type='submit' class="btn btn-lg btn-primary form-btn" id='save'>Add </button>
+              <button type='submit' class='add-friend-btn' id='save'>Add </button>
             </div>
           </div>
         </form>
