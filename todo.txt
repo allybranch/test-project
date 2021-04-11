@@ -23,8 +23,6 @@ Miscellaneous -- leigh
 - adjust the size of the input boxes in acct
 - how to stop the submission of null values?
 - leigh tried to fix the dropdown positioning but it didn't work lol
-- we need to decide how we want to display rating ie percent, stars, etc.
-- add description field?
 - add image somehow?
 
 
@@ -48,6 +46,8 @@ Search page -- leigh
 - then should just basically neeed to show and format query results
 - formatted the add to list and made it a button. added a hover shadow. 
 - added hover black to search button
+- add description field?
+- we need to decide how we want to display rating ie percent, stars, etc.
 
 Extra / If Time
 ###################
