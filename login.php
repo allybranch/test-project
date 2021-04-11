@@ -4,8 +4,8 @@ $_SESSION['user'] = "";
 ?> <!-- session here -->
 
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang='en'>
   <head>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
@@ -48,7 +48,7 @@ $_SESSION['user'] = "";
             <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
             <h1 class="page-title"> Sign In </h1>
 
-            <!-- Error Message --> 
+            <!-- Error Message -->
         <div id='errorm' class='text-center' >
             Username and password were not found. Please try again.
         </div>
@@ -80,14 +80,14 @@ $_SESSION['user'] = "";
 
       /*Show Error Message */
     function showErrorBox(){
-      var errorbox = document.getElementById("errorm");
-      errorbox.style.display = "block";
-    }
 
+var errorbox = document.getElementById("errorm");
+errorbox.style.display = "block";
+}
     </script>
     <!-- This PHP chexcks that a user with the given username and password exists, and sets the session variables -->
     <?php 
-  
+    $_SESSION['user'] = ""; 
     require('connectdb.php');
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
