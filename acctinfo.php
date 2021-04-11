@@ -28,59 +28,53 @@
           <form method="get" id='loginform' action="acctinfo.php" >
               <h1> Account Information </h1>
               <!-- Form Fields -->
-              <div class="row g-3">
-                  <div class="col">
+              <div class="row align-items-end">
+                  <div class="col-9">
+                    <label for="username">Username:</label>
                     <input type="text" name='username' id="inputUsername" class="form-control" placeholder= <?php if(isset($_SESSION['user']))echo $_SESSION['user']?> disabled>
                     <span name="error" class="error message" id="user_msg"> </span>
                   </div>
 
-                  <div class='col' > </div> <!-- keeping the user box as the right size -->
+                  <div class='col-3' > </div> <!-- keeping the user box as the right size -->
               </div>
-              <div class="row g-3">
-                  <div class="col">
+              <div class="row g-3 align-items-end">
+                  <div class="col-9">
+                      <label for="password">Password:</label>
                       <input type="text" name='password' id="inputPassword" class="form-control" placeholder="Enter New Password" >
                       <span name="error" class="error message" id="pwd_msg"> </span>
                   </div>
-
-                  <div class='col'>
-                    <div class="text-center">
+                  <div class='col-3'>
                     <button type='submit' class="profile-button" id='save' onclick=<?php updatePwd();?>>Save</button>
-                    </div>
                   </div>
               </div>
-              <div class="row g-3">
-                  <div class="col">
+              <div class="row g-3 align-items-end">
+                  <div class="col-9">
+                      <label for="password">First Name:</label>
                       <input type="text" id='firstname' name='firstname' class="form-control" value=<?php getFname();?> >
                       <span class="error message" id="fname_msg"></span>
                   </div>
 
-                  <div class='col'>
-                    <div class="text-center">
+                  <div class='col-3'>
                     <button type='submit' class="profile-button" id='save' onclick=<?php updateFname()?> >Save</button>
-                    </div>
                   </div>
               </div>
-              <div class="row g-3">
-                  <div class="col">
+              <div class="row g-3 align-items-end">
+                  <div class="col-9">
+                      <label for="password">Last Name:</label>
                       <input type="text" id='lastname' name='lastname' class="form-control" value=<?php getLname(); ?>>
                       <span class="error message" id="lname_msg"></span>
                   </div>
-
-                  <div class='col'>
-                    <div class="text-center">
+                  <div class='col-3'>
                     <button type='submit' class="profile-button" id='save' onclick=<?php updateLname()?>>Save</button>
-                    </div>
                   </div>
               </div>
-              <div class="row g-3">
-                  <div class="col">
+              <div class="row g-3 align-items-end">
+                  <div class="col-9">
+                  <label for="email">Email</label>
                       <input type="email" id="inputEmail" name='email' class="form-control" value=<?php getEmail();?> >
                   </div>
-
-                  <div class='col'>
-                    <div class='text-center'>
+                  <div class='col-3'>
                     <button type='submit' class="profile-button" id='save' onclick=<?php updateEmail()?>>Save</button>
-                    </div>
                   </div>
               </div>
             </form>

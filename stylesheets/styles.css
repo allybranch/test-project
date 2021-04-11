@@ -190,6 +190,14 @@ form > .col {
 }
 
 
+/* ACCOUNT INFO */
+#loginform > .row{
+  max-width: 500px;
+}
+.col-3{
+  padding-left: 0px;;
+}
+
 
 /* PROFILE */
 .profile-container1{
@@ -211,9 +219,10 @@ form > .col {
 }
 #profile-friends{
   display: none;
-  border: 1px solid grey;
   margin-left: 15px;
-
+}
+#profile-friends-list{
+  border: 1px solid grey;
 }
 #new-list-button{
   float:right;
@@ -257,6 +266,16 @@ form > .col {
   border-radius: 10px;
   padding: 5px 10px;
   font-weight: bold;
+}
+#add-friend-form > .row {
+  margin: 0px;
+  max-width: 400px;
+  padding: 10px 0px;
+}
+#add-friend-form > .row > .col {
+  margin: 0px;
+  max-width: 400px;
+  padding: 0px 5px 0px 0px;
 }
 
 

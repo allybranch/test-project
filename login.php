@@ -1,3 +1,8 @@
+<?php 
+session_start(); 
+$_SESSION['user'] = "";
+?> <!-- session here -->
+
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
 <!DOCTYPE html>
 
@@ -37,7 +42,6 @@
 
       <!-- Main Page -->
     <body id="login-page">
-    <?php session_start(); ?> <!-- session here -->
       <div class="main-page-area">
         <main class="form-signin">
           <form method="POST" id='loginform' action="<?php $_SERVER['PHP_SELF'] ?>" onsubmit="return validateSubmission()">
@@ -81,7 +85,7 @@
     }
 
     </script>
-    <!-- This PHP checks that a user with the given username and password exists, and sets the session variables -->
+    <!-- This PHP chexcks that a user with the given username and password exists, and sets the session variables -->
     <?php 
   
     require('connectdb.php');

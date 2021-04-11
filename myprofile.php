@@ -188,7 +188,7 @@
       </div>
       <!-- Friends List -->
       <div id="profile-friends">
-        <form id="add-friend-form" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+          <form id="add-friend-form" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
           <div class="row">
             <div class="col">
               <input type="text" name='friendusername' id="friendUsername" class="form-control" placeholder="Username" required>
@@ -198,19 +198,21 @@
             </div>
           </div>
         </form>
-        <?php
-          $query = "select * from friends WHERE username=:username";
-          $statement = $db->prepare($query);
-          $statement->bindValue(':username', $_SESSION['user']);
-          $statement->execute();
-          $results = $statement->fetchAll();
-          $statement->closecursor();
-          foreach ($results as $result)
-          {	
-              echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
-              echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";    
-          }
-        ?>
+        <div id="profile-friends-list">
+          <?php
+            $query = "select * from friends WHERE username=:username";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':username', $_SESSION['user']);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            $statement->closecursor();
+            foreach ($results as $result)
+            {	
+                echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
+                echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";    
+            }
+          ?>
+        </div>
       </div>
     </div>
   </body>

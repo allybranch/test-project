@@ -1,3 +1,49 @@
+<?php session_start(); ?> <!-- session here -->
+<?php     
+    require('connectdb.php');
+        // make sessions available
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
+      // Get User info from form
+      $first = trim($_POST['first']);
+      $last = trim($_POST['last']);
+      $email = trim($_POST['email']);
+      $user = trim($_POST['username']);
+      $pwd = md5(trim($_POST['password']));
+
+      // See if the username is already being used (it should NOT exist in the users table)
+      global $db;
+        $query = "select username from users WHERE username=:user";
+        $statement = $db->prepare($query); 
+        $statement->bindValue(':user', $user);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closecursor();
+
+      // Check that the query doesn't return anything
+      if (count($results) == 0){
+    
+        //add new user to the users table
+        $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
+        $statement = $db->prepare($query); 
+        $statement->bindValue(':user', $user);
+        $statement->bindValue(':pwd', $pwd);
+        $statement->bindValue(':first', $first);
+        $statement->bindValue(':last', $last);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closecursor();
+        // set session attributes
+        $_SESSION['user'] = $user; 
+         //redirect to profile page
+        header('Location: myprofile.php');
+      }
+      else if (count($results) > 0){ //username already in use
+        echo 'hi';
+        echo "<script> showErrorBox(); </script>";
+      }
+    }
+  ?>
+
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
   <!DOCTYPE html>
 <html lang='en'>
@@ -9,7 +55,6 @@
   </head>
 
   <body id="register-page">
-  <?php session_start(); ?> <!-- session here -->
 
     <!-- Navigation Bar -->
     <header>
@@ -103,51 +148,7 @@
     }
   </script>
   
-  <?php     
-    require('connectdb.php');
-        // make sessions available
-    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
-      // Get User info from form
-      $first = trim($_POST['first']);
-      $last = trim($_POST['last']);
-      $email = trim($_POST['email']);
-      $user = trim($_POST['username']);
-      $pwd = md5(trim($_POST['password']));
 
-      // See if the username is already being used (it should NOT exist in the users table)
-      global $db;
-        $query = "select username from users WHERE username=:user";
-        $statement = $db->prepare($query); 
-        $statement->bindValue(':user', $user);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closecursor();
-
-      // Check that the query doesn't return anything
-      if (count($results) == 0){
-    
-        //add new user to the users table
-        $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
-        $statement = $db->prepare($query); 
-        $statement->bindValue(':user', $user);
-        $statement->bindValue(':pwd', $pwd);
-        $statement->bindValue(':first', $first);
-        $statement->bindValue(':last', $last);
-        $statement->bindValue(':email', $email);
-        $statement->execute();
-        $statement->closecursor();
-        // set session attributes
-        $_SESSION['user'] = $user; 
-        $_SESSION['pwd'] = $pwd;
-         //redirect to profile page
-        header('Location: myprofile.php');
-      }
-      else if (count($results) > 0){ //username already in use
-        echo 'hi';
-        echo "<script> showErrorBox(); </script>";
-      }
-    }
-  ?>
 
   <script>
     /*Show Password Instructions*/
