@@ -1,3 +1,29 @@
+<?php 
+  session_start(); 
+  // make sessions available
+  // check that user if logged in, if not send them back to the login page
+  if ($_SESSION['user']==""){
+    header('Location: login.php');
+  }
+  require('connectdb.php');
+  include('header.html');
+  global $db;
+  // get user info from the database
+  $query = "select * from users WHERE username=:user";
+  $statement = $db->prepare($query);
+  if (isset($_GET['username'])){
+    $username= $_GET['username'];
+  }
+  $statement->bindValue(':user', $username);
+  $statement->execute();
+  $results = $statement->fetchAll();
+  $statement->closecursor();
+  $name = "";
+  foreach ($results as $result){	
+      $name = $result['firstname'];
+  }
+?>
+
 <!DOCTYPE html>
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
 
@@ -11,32 +37,6 @@
       <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.theme.default.min.css">
   </head>
   <body>
-    <?php 
-      session_start(); 
-      // make sessions available
-      // check that user if logged in, if not send them back to the login page
-      if ($_SESSION['user']==""){
-        header('Location: login.php');
-      }
-      require('connectdb.php');
-      include('header.html');
-      global $db;
-      // get user info from the database
-      $query = "select * from users WHERE username=:user";
-      $statement = $db->prepare($query);
-      if (isset($_GET['username'])){
-        $username= $_GET['username'];
-      }
-      $statement->bindValue(':user', $username);
-      $statement->execute();
-      $results = $statement->fetchAll();
-      $statement->closecursor();
-      $name = "";
-      foreach ($results as $result)
-      {	
-         $name = $result['firstname'];
-      }
-    ?>
     <div class="main-page-area">
     <div class='profile-container1'>
     <h1 class='text-center' id='listcount'> <?php echo $name . "'s Profile";?></h1>
@@ -63,33 +63,27 @@
       </div>
       <!-- Friends List -->
       <div id="profile-friends">
-          <?php
-                $query = "select * from friends WHERE username=:username";
-                $statement = $db->prepare($query);
-                $statement->bindValue(':username', $_GET['username']);
-                $statement->execute();
-                $results = $statement->fetchAll();
-                $statement->closecursor();
-                foreach ($results as $result){	
-                    if ($result['frienduser']==$_SESSION['user']){
-                        echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
-                        echo  "<a href='myprofile.php" . "'>". $result['frienduser'] . "</a></div>"; 
-                    }
-                    else{
-                        echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@"; 
-                        echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";                }
-                    }
-
-          ?>
+        <?php
+          $query = "select * from friends WHERE username=:username";
+          $statement = $db->prepare($query);
+          $statement->bindValue(':username', $_GET['username']);
+          $statement->execute();
+          $results = $statement->fetchAll();
+          $statement->closecursor();
+          foreach ($results as $result){	
+            if ($result['frienduser']==$_SESSION['user']){
+                echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
+                echo  "<a href='myprofile.php" . "'>". $result['frienduser'] . "</a></div>"; 
+            }
+            else{
+                echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@"; 
+                echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";    
+            }          
+          }
+        ?>
       </div>
     </div>
-    
   </body>
-
-  <?php 
-
-
-  ?>
 
   <!-- JQuery and Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

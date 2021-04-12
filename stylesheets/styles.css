@@ -192,13 +192,48 @@ form > .col {
   display: inline-flex;
 }
 
+.dropdown {
+  position: relative;
+  float: right;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 10px;
+  min-width: 200px;
+  background-color:  #FFAE4B;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 1;
+
+}
+.dropdown-content div {
+  color: white;
+  padding: 4px 10px;
+  text-decoration: none;
+  display: block;
+  border-radius: 20px;
+}
+.dropdown-content div:hover {background-color:rgb(248, 157, 46);;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+button{
+  font-size: 100%;
+  background: inherit;
+  border: none;
+  color: inherit;
+  font-weight: inherit;
+}
+
 /* ACCOUNT INFO */
-#loginform > .row{
+#edit-info-form > .row{
   max-width: 500px;
 }
 .col-3{
   padding-left: 0px;;
 }
+
 
 
 /* PROFILE */

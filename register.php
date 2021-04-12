@@ -1,51 +1,46 @@
-<?php session_start(); ?> <!-- session here -->
-<?php     
-    require('connectdb.php');
-        // make sessions available
-    if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
-      // Get User info from form
-      $first = trim($_POST['first']);
-      $last = trim($_POST['last']);
-      $email = trim($_POST['email']);
-      $user = trim($_POST['username']);
-      $pwd = md5(trim($_POST['password']));
-
-      // See if the username is already being used (it should NOT exist in the users table)
-      global $db;
-        $query = "select username from users WHERE username=:user";
-        $statement = $db->prepare($query); 
-        $statement->bindValue(':user', $user);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closecursor();
-
-      // Check that the query doesn't return anything
-      if (count($results) == 0){
-    
-        //add new user to the users table
-        $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
-        $statement = $db->prepare($query); 
-        $statement->bindValue(':user', $user);
-        $statement->bindValue(':pwd', $pwd);
-        $statement->bindValue(':first', $first);
-        $statement->bindValue(':last', $last);
-        $statement->bindValue(':email', $email);
-        $statement->execute();
-        $statement->closecursor();
-        // set session attributes
-        $_SESSION['user'] = $user; 
-         //redirect to profile page
-        header('Location: myprofile.php');
-      }
-      else if (count($results) > 0){ //username already in use
-        echo 'hi';
-        echo "<script> showErrorBox(); </script>";
-      }
-    }
-  ?>
-
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-  <!DOCTYPE html>
+<?php 
+session_start(); // make sessions available
+  require('connectdb.php');
+  if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
+    // Get new account info from form
+    $first = trim($_POST['first']);
+    $last = trim($_POST['last']);
+    $email = trim($_POST['email']);
+    $user = trim($_POST['username']);
+    $pwd = md5(trim($_POST['password'])); //hash password (so we don't store it directly)
+
+    // See if the username is already being used (it should NOT exist in the users table)
+    global $db;
+    $query = "select username from users WHERE username=:user";
+    $statement = $db->prepare($query); 
+    $statement->bindValue(':user', $user);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closecursor();
+    
+    // Check that the query doesn't return anything
+    if (count($results) == 0){
+      //add new user to the users table
+      $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
+      $statement = $db->prepare($query); 
+      $statement->bindValue(':user', $user);
+      $statement->bindValue(':pwd', $pwd);
+      $statement->bindValue(':first', $first);
+      $statement->bindValue(':last', $last);
+      $statement->bindValue(':email', $email);
+      $statement->execute();
+      $statement->closecursor();
+      $_SESSION['user'] = $user; // set session user
+      header('Location: myprofile.php'); //redirect to profile page
+    }
+    else if (count($results) > 0){ //username already in use
+      echo "<script> showErrorBox(); </script>";
+    }
+  }
+?>
+
+<!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
@@ -55,7 +50,6 @@
   </head>
 
   <body id="register-page">
-
     <!-- Navigation Bar -->
     <header>
       <nav class="navbar navbar-expand-sm">
@@ -79,83 +73,77 @@
           </div>
       </nav>
     </header>
-
    
     <!-- Main Page -->
     <div class="main-page-area" >
-
       <!-- Register Form: title, image -->
-          <form form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="form-signin" onsubmit="return validateSubmission()">
-            <div class="logo-img-container"> <img  class="logo-img" src="images/logo1.png"> </img> </div>
-            <h1 class="page-title"> Get Started </h1>
+      <form form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" class="form-signin" onsubmit="return validateSubmission()">
+        <div class="logo-img-container"> <img  class="logo-img" src="images/logo1.png"> </img> </div>
+        <h1 class="page-title"> Get Started </h1>
 
-            <!-- Password Instructions -->
-            <div id='pwdinstr' class='text-center'>
-              Your password must satisfy these requirements:
-              <ul>
-                <div id='pwditems'>
-                  <li>Cannot less than 8 characters </li>
-                  <li>Must be a mix of letters, numbers and symbols </li>
-                </div>
-              </ul>
+        <!-- Password Instructions -->
+        <div id='pwdinstr' class='text-center'>
+          Your password must satisfy these requirements:
+          <ul>
+            <div id='pwditems'>
+              <li>Cannot less than 8 characters </li>
+              <li>Must be a mix of letters, numbers and symbols </li>
             </div>
-              
-                <!-- Error Message -->
-            <div id='errorm' class='text-center' >
-                Username is already in use. Please try another.
-            </div>
+          </ul>
+        </div>
+          
+        <!-- Error Message -->
+        <div id='errorm' class='text-center' >
+            Username is already in use. Please try another.
+        </div>
 
-            <!-- Register Form: fields, submit btn -->
-            <div class="row g-0">
-              <div class="col">
-                <input type="text" id='firstname' name='first' class="form-control" placeholder="First name" aria-label="First name" autofocus>
-                <span class="error message" id="fname_msg"></span>
-              </div>
-              <div class="col">
-                <input type="text" id='lastname' name='last' class="form-control" placeholder="Last name" aria-label="Last name">
-                <span class="error message" id="lname_msg"></span>
-              </div>
+        <!-- Register Form: fields, submit btn -->
+        <div class="row g-0">
+          <div class="col">
+            <input type="text" id='firstname' name='first' class="form-control" placeholder="First name" aria-label="First name" autofocus>
+            <span class="error message" id="fname_msg"></span>
+          </div>
+          <div class="col">
+            <input type="text" id='lastname' name='last' class="form-control" placeholder="Last name" aria-label="Last name">
+            <span class="error message" id="lname_msg"></span>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col">
+            <input type="email" id="inputEmail" name='email' class="form-control" placeholder="Email Address" >
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col">
+            <input type="text" id="inputUsername" name='username' class="form-control" placeholder="Username" required>
+            <span class="error message" id="user_msg"></span>
+          </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+              <input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" onfocus="showPwdInstructions()" required>
+              <span class="error message" id="pwd_msg"></span>
             </div>
-            <div class="row g-3">
-              <div class="col">
-                <input type="email" id="inputEmail" name='email' class="form-control" placeholder="Email Address" >
-              </div>
-            </div>
-            <div class="row g-3">
-              <div class="col">
-                <input type="text" id="inputUsername" name='username' class="form-control" placeholder="Username" required>
-                <span class="error message" id="user_msg"></span>
-              </div>
-            </div>
-            <div class="row g-3">
-                <div class="col">
-                  <input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" onfocus="showPwdInstructions()" required>
-                  <span class="error message" id="pwd_msg"></span>
-                </div>
-            </div>
-            <div class="text-center">
-              <button class="btn form-btn btn-lg btn-primary" type="submit" >SIGN UP</button>
-            </div>
-          </form>
+        </div>
+        <div class="text-center">
+          <button class="btn form-btn btn-lg btn-primary" type="submit" >SIGN UP</button>
+        </div>
+      </form>
     </div>
   </body>
 
   <script>
-    /*Show Error Message */
+    /* Show Error Message */
     function showErrorBox(){
       var errorbox = document.getElementById("errorm");
       errorbox.style.display = "block";
     }
-  </script>
-  
-
-
-  <script>
-    /*Show Password Instructions*/
+    /* Show Password Instructions*/
     function showPwdInstructions(){
       var pwdinstr = document.getElementById("pwdinstr");
       pwdinstr.style.display = "block";
     }
+    /* Validate All Fields */
     function validateSubmission(){
       if(validateFirstName() && validateLastName() && validatePassword() && validateUsername()){
         return true;
@@ -201,26 +189,26 @@
           return false;
         }
       }
-        /* Validate Password */
-        //input validation + relevant error messagess
-        function validatePassword(){
-          var password = document.getElementById('inputPassword').value;
+    /* Validate Password */
+    //input validation + relevant error messagess
+    function validatePassword(){
+      var password = document.getElementById('inputPassword').value;
 
-          //passwords need to be larger than 8 characters
-          if(password.length > 8 && isNaN(password)){
-            document.getElementById('pwd_msg').value = "";
-            return true;
-          }
-          else{//otherwise it's too short
-            document.getElementById("pwd_msg").innerHTML = "Your password must be longer than 8 characters.";
-            document.getElementById("inputPassword").value = password;
-            return false;
-          }
-        }
+      //passwords need to be larger than 8 characters
+      if(password.length > 8 && isNaN(password)){
+        document.getElementById('pwd_msg').value = "";
+        return true;
+      }
+      else{//otherwise it's too short
+        document.getElementById("pwd_msg").innerHTML = "Your password must be longer than 8 characters.";
+        document.getElementById("inputPassword").value = password;
+        return false;
+      }
+    }
   </script>
 
-    <!-- JQuery and Bootstrap Javascript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <!-- JQuery and Bootstrap Javascript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
 </html>
