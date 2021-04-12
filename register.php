@@ -1,43 +1,6 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
 <?php 
 session_start(); // make sessions available
-  require('connectdb.php');
-  if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
-    // Get new account info from form
-    $first = trim($_POST['first']);
-    $last = trim($_POST['last']);
-    $email = trim($_POST['email']);
-    $user = trim($_POST['username']);
-    $pwd = md5(trim($_POST['password'])); //hash password (so we don't store it directly)
-
-    // See if the username is already being used (it should NOT exist in the users table)
-    global $db;
-    $query = "select username from users WHERE username=:user";
-    $statement = $db->prepare($query); 
-    $statement->bindValue(':user', $user);
-    $statement->execute();
-    $results = $statement->fetchAll();
-    $statement->closecursor();
-    
-    // Check that the query doesn't return anything
-    if (count($results) == 0){
-      //add new user to the users table
-      $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
-      $statement = $db->prepare($query); 
-      $statement->bindValue(':user', $user);
-      $statement->bindValue(':pwd', $pwd);
-      $statement->bindValue(':first', $first);
-      $statement->bindValue(':last', $last);
-      $statement->bindValue(':email', $email);
-      $statement->execute();
-      $statement->closecursor();
-      $_SESSION['user'] = $user; // set session user
-      header('Location: myprofile.php'); //redirect to profile page
-    }
-    else if (count($results) > 0){ //username already in use
-      echo "<script> showErrorBox(); </script>";
-    }
-  }
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +56,7 @@ session_start(); // make sessions available
         </div>
           
         <!-- Error Message -->
-        <div id='errorm' class='text-center' >
+        <div id='error' class='text-center' >
             Username is already in use. Please try another.
         </div>
 
@@ -132,12 +95,55 @@ session_start(); // make sessions available
     </div>
   </body>
 
-  <script>
-    /* Show Error Message */
-    function showErrorBox(){
-      var errorbox = document.getElementById("errorm");
-      errorbox.style.display = "block";
+  <?php
+  require('connectdb.php');
+  if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
+    // Get new account info from form
+    $first = trim($_POST['first']);
+    $last = trim($_POST['last']);
+    $email = trim($_POST['email']);
+    $user = trim($_POST['username']);
+    $pwd = md5(trim($_POST['password'])); //hash password (so we don't store it directly)
+
+    // See if the username is already being used (it should NOT exist in the users table)
+    global $db;
+    $query = "select username from users WHERE username=:user";
+    $statement = $db->prepare($query); 
+    $statement->bindValue(':user', $user);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closecursor();
+    
+    // Check that the query doesn't return anything
+    if (count($results) == 0){
+      //add new user to the users table
+      $query = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (:user, :pwd, :first, :last, :email)";
+      $statement = $db->prepare($query); 
+      $statement->bindValue(':user', $user);
+      $statement->bindValue(':pwd', $pwd);
+      $statement->bindValue(':first', $first);
+      $statement->bindValue(':last', $last);
+      $statement->bindValue(':email', $email);
+      $statement->execute();
+      $statement->closecursor();
+      $_SESSION['user'] = $user; // set session user
+      header('Location: myprofile.php'); //redirect to profile page
     }
+    else if (count($results) > 0){ //username already in use
+      echo 
+      '<script> 
+      /* Show Error Message */
+      function showErrorBox(){
+        var errorbox = document.getElementById("error");
+        errorbox.style.display = "block";
+      }
+      showErrorBox();
+      </script>';
+    }
+  }
+?>
+
+  <script>
     /* Show Password Instructions*/
     function showPwdInstructions(){
       var pwdinstr = document.getElementById("pwdinstr");
@@ -145,7 +151,11 @@ session_start(); // make sessions available
     }
     /* Validate All Fields */
     function validateSubmission(){
-      if(validateFirstName() && validateLastName() && validatePassword() && validateUsername()){
+      var v1 = validateFirstName();
+      var v2 = validateLastName();
+      var v3 = validatePassword(); 
+      var v4 = validateUsername();
+      if(v1 && v2 && v3 && v4){
         return true;
       }
       return false;
@@ -195,7 +205,7 @@ session_start(); // make sessions available
       var password = document.getElementById('inputPassword').value;
 
       //passwords need to be larger than 8 characters
-      if(password.length > 8 && isNaN(password)){
+      if(password.length >= 8 && isNaN(password)){
         document.getElementById('pwd_msg').value = "";
         return true;
       }

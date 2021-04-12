@@ -99,18 +99,22 @@ form > .col {
   border: solid, lightblue;
 }
 .error  {
-  display: block;
-  font-style: italic;
-  color: red;
+  display:block;
+  background:lightpink;
+  border: solid,red;
+  max-width: 400px;
+  margin: 10px auto;
 }
 #pwditems{
   text-align: center;
   list-style-position:inside;
 }
-#errorm{
+#error{
   display:none;
   background:lightpink;
   border: solid,red;
+  max-width: 400px;
+  margin: auto;
 }
 
 
@@ -200,7 +204,7 @@ form > .col {
   display: none;
   position: absolute;
   right: 10px;
-  min-width: 200px;
+  min-width: 180px;
   background-color:  #FFAE4B;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border-radius: 20px;
@@ -210,7 +214,7 @@ form > .col {
 }
 .dropdown-content div {
   color: white;
-  padding: 4px 10px;
+  padding: 4px 5px;
   text-decoration: none;
   display: block;
   border-radius: 20px;

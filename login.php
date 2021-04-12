@@ -47,19 +47,17 @@ $_SESSION['user'] = "";
           <div class="logo-img-container"> <img class="logo-img" src="images/logo1.png"> </img> </div>
           <h1 class="page-title"> Sign In </h1>
           <!-- Error Message -->
-          <div id='errorm' class='text-center'>
+          <div id='error' class='text-center'>
               Username and password were not found. Please try again.
           </div>
           <div class="row g-3">
             <div class="col">
               <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-              <span name="error" class="error message" id="user_msg"> </span>
             </div>
           </div>
           <div class="row g-3">
               <div class="col">
                 <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
-                <span name="error" class="error message" id="pwd_msg"> </span>
                 <div class="form-group showPassword">
                   <input  type="checkbox" id="showPassword" /> Show password
                 </div>
@@ -75,7 +73,7 @@ $_SESSION['user'] = "";
   <script>
     /*Show Error Message */
     function showErrorBox(){
-      var errorbox = document.getElementById("errorm");
+      var errorbox = document.getElementById("error");
       errorbox.style.display = "block";
     }
   </script>
@@ -83,15 +81,15 @@ $_SESSION['user'] = "";
     /* Show / Hide Password  */
     //anonymous function + event listener
     (function() {
-    var pwd = document.getElementById("inputPassword");             // get password input
-    var show = document.getElementById("showPassword");        // get checkbox input
+    var pwd = document.getElementById("inputPassword"); // get password input
+    var show = document.getElementById("showPassword"); // get checkbox input
 
-    show.addEventListener("change", function() {          // when user click on checkbox
+    show.addEventListener("change", function() { // when user clicks checkbox
         try {
         if (show.checked)
-              pwd.type ="text";                            // change type of password box to text, thus show the entry
+              pwd.type ="text"; // change type of password box to text, thus show the entry
         else
-              pwd.type = "password";                       // change type of password box to password, thus mask the entry
+              pwd.type = "password"; // change type of password box to password, thus mask the entry
         } catch(error) {
           alert("Cannot switch type");
         }
