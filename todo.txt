@@ -1,15 +1,13 @@
 To Do:
 #####################   
 
-Friends
-- allow users to add friends (maybe on a new page or on the myprofile page) by searching by username or first and last name
-- maybe create a friends database that just holds pairs of friends (ex - user1, user2)
-- have a user's friends show up under the my friends tab on the my profile page
+- fix gcp hosting
+- fix acctinfo page refresh -- angular
+- make add to list buttons functional
+- api for images
+- home page is feed of updates of your friends
+- find db of sample data
 
-View other profiles:
-- I think we can use url rewriting to be able to view other profiles. 
-- So if the url would goodfilms/profile/user1 and it would show user 1's profile
-- So you can click on a friend from your friends list and view their profile
 
 Movie data
 - I think we can probably just use the IMDB datasets for now (https://www.imdb.com/interfaces/)
@@ -18,20 +16,28 @@ Movie data
 - The IMDB file is like insanely large so we'll definitely have to trim that down somehow (I think it has Shorts and TV episodes which we probably don't need) or find another datasource
 
 Miscellaneous -- leigh
-- should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
-- need to take a look at all the requirements and make sure we do everthing / fit all those in
-- adjust the size of the input boxes in acct
 - how to stop the submission of null values?
-- leigh tried to fix the dropdown positioning but it didn't work lol
 - add image somehow?
 
 
 done:
 
+Friends -- ally
+- allow users to add friends (maybe on a new page or on the myprofile page) by searching by username or first and last name
+- maybe create a friends database that just holds pairs of friends (ex - user1, user2)
+- have a user's friends show up under the my friends tab on the my profile page
+
+View other profiles: --ally 
+- I think we can use url rewriting to be able to view other profiles. 
+- So if the url would goodfilms/profile/user1 and it would show user 1's profile
+- So you can click on a friend from your friends list and view their profile
+
 Miscellaneous -- leigh
 - add error messages for when username and password not found in database
 - add error messages for register when username is already being used
 - format the add friend button
+- should probably do some testing for the input validation stuff, I noticed sometimes the messages sometimes didn't make sense for the inputs
+- adjust the size of the input boxes in acct
 
 
 Edit Account Info -- leigh

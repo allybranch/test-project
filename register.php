@@ -127,6 +127,7 @@ session_start(); // make sessions available
       $statement->execute();
       $statement->closecursor();
       $_SESSION['user'] = $user; // set session user
+      $_SESSION['toggle']=false;
       header('Location: myprofile.php'); //redirect to profile page
     }
     else if (count($results) > 0){ //username already in use

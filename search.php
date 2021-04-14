@@ -23,7 +23,7 @@
         <?php 
         // Find and display search results
         require('connectdb.php');
-        if (isset($_POST['sbar'])){//if a given title, go get the matching results
+        if (isset($_POST['sbar'])){
           global $db;
           $query = "select * from titles WHERE name LIKE :title ";
           $statement = $db->prepare($query); 
@@ -32,7 +32,11 @@
           $results = $statement->fetchAll();
           $statement->closeCursor();
           $name = $year = $type = $rating = $description = "";
+
+          //show the number of search results on the screen
           echo "<script> document.getElementById('heading').innerHTML+= '(" . count($results) . ")';</script>";
+
+          //format and display each result
           foreach ($results as $result){	
             $name = $result['name'];
             $year=$result['year'];

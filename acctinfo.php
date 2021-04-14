@@ -68,7 +68,7 @@
                             <input type="email" id="inputEmail" name='email' class="form-control" value=<?php getEmail();?> >
                         </div>
                         <div class='col-3'>
-                            <button type='submit' class="profile-button" id='save' onclick=<?php updateEmail()?>>Save</button>
+                            <button type='submit' class="profile-button" id='save' onclick=(<?php updateEmail()?> && window.location.reload(true))>Save</button>
                         </div>
                     </div>
                 </form>
@@ -149,7 +149,7 @@
                 $statement->bindValue(':lname',$pass);
                 $statement->execute();
                 $statement->closeCursor();
-                getLname(); //update the screen
+                getLname();
             }
         }
         function updateFname(){
@@ -181,24 +181,6 @@
             }
         }
     ?>
-
-    <script>
-        /* Keep Customer Info */
-        //eventually get it from the register page using php
-        function saveInfo(){
-            var firstname = document.getElementById('firstname').value;
-            document.getElementById('firstname').value= firstname;
-            var lastname = document.getElementById('lastname').value;
-            document.getElementById('lastname').value= lastname;
-            var usr = document.getElementById('inputUsername').value;
-            document.getElementById('inputUsername').value= usr;
-            var pwd = document.getElementById('inputPassword').value;
-            document.getElementById('inputPassword').value= pwd;
-            var email = document.getElementById('inputEmail').value;
-            document.getElementById('inputEmail').value= email;
-            return false; //until we actually have this info in a db
-        }
-    </script>
 
     <!-- Bootstrap and JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

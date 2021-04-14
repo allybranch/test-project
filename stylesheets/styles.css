@@ -47,6 +47,9 @@ a:hover {
 #search-button:hover{
   color:black;
 }
+.dropdown-menu{
+  top:40px;
+}
 
 /* REGISTER AND LOGIN PAGES */
 #register-page, #login-page{

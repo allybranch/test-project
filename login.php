@@ -103,8 +103,7 @@ $_SESSION['user'] = "";
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['username']) > 0){
       $user = trim($_POST['username']);
       $pwd = md5(trim($_POST['password']));
-      // set session attributes
-      $_SESSION['user'] = $user; 
+
       # Check that the username and password combo are correct (that they exist in the users table)
       global $db;
       $query = "select username, password from users WHERE username=:user AND password=:pwd LIMIT 1";
@@ -116,6 +115,7 @@ $_SESSION['user'] = "";
       $statement->closecursor();
       if (count($results) > 0){
         $_SESSION['user'] = $user; 
+        $_SESSION['toggle']=false;
         echo $_SESSION['user'];
         header('Location: myprofile.php');
       }

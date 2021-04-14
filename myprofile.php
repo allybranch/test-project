@@ -1,6 +1,6 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<?php 
-      session_start(); 
+<?php   session_start(); 
+    
       // make sessions available
       // check that user if logged in, if not send them back to the login page
       if ($_SESSION['user']==""){
@@ -22,7 +22,7 @@
          $name = $result['firstname'];
       }
 ?>
-
+</script>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -205,19 +205,39 @@
               $statement->bindValue(':username', $_SESSION['user']);
               $statement->execute();
               $results = $statement->fetchAll();
-              $statement->closecursor();
+              $statement->closeCursor();
               foreach ($results as $result)
               {	
                   echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
                   echo  "<a href='profile.php?username=" . $result['frienduser'] . "'>". $result['frienduser'] . "</a></div>";    
               }
+              
             ?>
           </div>
         </div>
     </div>
   </body>
 
-  <?php 
+  <script> 
+  /* View Friends Toggle */ 
+    function ViewFriends(){
+          var lists = document.getElementById("profile-lists");
+          var friends = document.getElementById("profile-friends");
+          var title =document.getElementById("profile-title");
+          title.innerHTML =  "<h2> My Friends </h2> ";
+          lists.style.display = "none";
+          friends.style.display = "block";
+          listBtn=document.getElementById("new-list-button");
+          listBtn.style.display='none';
+          friendBtn=document.getElementById("new-friend-button");
+          friendBtn.style.display='block';
+        }
+      </script>
+
+      <?php 
+    if(isset($_SESSION['toggle']) && $_SESSION['toggle']=='true'){ //should display the friends lists
+      echo "<script> ViewFriends(); </script>";
+    }
     # Add a friend to list by username)
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['friendusername']) > 0){
       global $db;
@@ -240,6 +260,8 @@
       $statement->bindValue(':friendfirst', $first);
       $statement->bindValue(':friendlast', $last);
       $statement->execute();
+      $_SESSION['toggle']='true';
+      echo "<script>  window.location.href='myprofile.php';  </script>";
       }
   ?>
 
@@ -292,18 +314,6 @@
       listBtn.style.display='block';
       friendBtn=document.getElementById("new-friend-button");
       friendBtn.style.display='none';
-    }
-    function ViewFriends(){
-      var lists = document.getElementById("profile-lists");
-      var friends = document.getElementById("profile-friends");
-      var title =document.getElementById("profile-title");
-      title.innerHTML =  "<h2> My Friends </h2> ";
-      lists.style.display = "none";
-      friends.style.display = "block";
-      listBtn=document.getElementById("new-list-button");
-      listBtn.style.display='none';
-      friendBtn=document.getElementById("new-friend-button");
-      friendBtn.style.display='block';
     }
     function addFriend(){
       friendForm=document.getElementById("add-friend-form");
