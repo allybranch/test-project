@@ -28,6 +28,9 @@ a:hover {
 .navbar-toggler-icon{
   color: white;
 }
+.dropdown-menu{
+  top: 40px;
+}
 .navbar-brand{
   color: white;
   font-weight: bold;
