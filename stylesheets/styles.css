@@ -214,18 +214,22 @@ form > .col {
   background-color:  #FFAE4B;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border-radius: 20px;
-  font-weight: bold;
   z-index: 1;
 
 }
-.dropdown-content div {
+.dropdown-content input {
+  background-color: inherit;
   color: white;
   padding: 4px 5px;
   text-decoration: none;
   display: block;
   border-radius: 20px;
+  border: none;
+  width: 100%;
+  font-weight: bold;
+
 }
-.dropdown-content div:hover {background-color:rgb(248, 157, 46);;}
+.dropdown-content input:hover {background-color:rgb(248, 157, 46);;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 button{

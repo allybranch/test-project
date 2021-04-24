@@ -63,11 +63,11 @@ session_start(); // make sessions available
         <!-- Register Form: fields, submit btn -->
         <div class="row g-0">
           <div class="col">
-            <input type="text" id='firstname' name='first' class="form-control" placeholder="First name" aria-label="First name" autofocus>
+            <input type="text" id='firstname' name='first' class="form-control" placeholder="First Name" aria-label="First name" autofocus>
             <span class="error message" id="fname_msg"></span>
           </div>
           <div class="col">
-            <input type="text" id='lastname' name='last' class="form-control" placeholder="Last name" aria-label="Last name">
+            <input type="text" id='lastname' name='last' class="form-control" placeholder="Last Name" aria-label="Last name">
             <span class="error message" id="lname_msg"></span>
           </div>
         </div>
