@@ -3,6 +3,7 @@ To Do:
 
 - fix gcp hosting
 - fix acctinfo page refresh -- angular
+    https://www.thetechieshouse.com/angular-4-with-php-backend-angular-4-php-mysql/
 - make add to list buttons functional
 - api for images
 - home page is feed of updates of your friends
