@@ -25,7 +25,7 @@
         require('connectdb.php');
         if (isset($_POST['sbar'])){
           global $db;
-          $query = "select * from titles WHERE name LIKE :title ";
+          $query = "select * from movies_metadata WHERE title LIKE :title LIMIT 100";
           $statement = $db->prepare($query); 
           $statement->bindValue(':title', '%' . $_POST['sbar'] . '%');
           $statement->execute();
@@ -38,23 +38,15 @@
 
           //format and display each result
           foreach ($results as $result){	
-            $name = $result['name'];
-            $year=$result['year'];
-            $type=$result['type'];
-            $rating=$result['rating'];
-            $description=$result['description'];
-            echo '<div class="search-result"> <h3 class="search-result-title"> ' . $name . '</h3>' . 
+            $name = $result['title'];
+            $year=$result['release_date'];
+            $id=$result['imdb_id'];
+            $rating=$result['vote_average'];
+            $description=$result['overview'];
+            echo '<div class="search-result"> <h3 class="search-result-title"><a href="title.php?id='. $id . '">' . $name . '</a></h3>' . 
                     '<h4 class = "search-result-type"> (' . $year .') </h4> 
                     <div class="rating">
                     <img src="images/star.png" class="add-list-img"> </img> <h4> ' . $rating . '</h4> /10  
-                    </div>
-                    <div class="dropdown">
-                      <button class="add-to-list"><img src="images/add.png" class="add-list-img"></img> Add to List </button>
-                      <div class="dropdown-content">
-                        <div name=' .$result['id'] . '><button name="want-to-watch" onclick="addToList(event)">Want to Watch</button></div>
-                        <div name=' .$result['id'] . ' ><button name="currently-watching" onclick="addToList(event)">Currently Watching</button></div>
-                        <div name=' .$result['id'] . ' ><button name="watched" onclick="addToList(event)">Watched</button></div>
-                      </div>
                     </div>
                     <div class="search-result-description">
                         <p>' . $description .  '</p>
