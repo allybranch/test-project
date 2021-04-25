@@ -91,3 +91,32 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
   </html>
+
+  <?php 
+  /* ANGULAR TO PHP */
+  // console.log('You submitted value: ', form);
+  //   this.data_submitted = form;
+
+  //   // console.log(this.data_submitted, this.data_submitted.name.length);
+  //   console.log('form submitted ', form);
+
+  //   //prepare to send a request to the backend php
+  //   //1. convert form data to appropriate format aka json
+  //   let params = JSON.stringify(form);
+
+  //   //2. send an http request to the backend
+  //   //get or post request
+
+  //   //sent a post request
+  //   //post<return_type>('url',data)
+  //   this.http.post<Order>('http://localhost/inclass/http-backend.php',params)
+  //   .subscribe((phpresponse) => {
+  //     //success, use response in some way
+  //     this.responsedata =phpresponse;
+  //     console.log(this.responsedata);
+  //   },(error_in_comm) => {
+  //     //error occurs, handle it in some way
+  //     console.log('error occurs ', error_in_comm);
+  //   })
+  
+  ?>

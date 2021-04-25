@@ -1,21 +1,20 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<head>
-    <link rel="stylesheet" href="../../../../stylesheets/styles.css">
-</head>
+
+<!-- HEADER PAGE CONVERTED TO ANGULAR -->
 <header>
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="navbar-brand">
-        <img class=navbar-logo src="../../../../images/logo3.png" alt="">
-        <a href="../../../../browse.php">GoodFilms</a>
+        <img class=navbar-logo src="../../assets/images/logo3.png" alt="">
+        <a href="http://localhost/project/browse.php">GoodFilms</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <form method="POST" action="search.php" class="form-inline mt-2 mt-md-0">
+          <form #search="ngForm" (ngSubmit)="onSubmit(search.value)" method="POST" action="http://localhost/project/search.php" class="form-inline mt-2 mt-md-0">
             <div class="input-group">
-                <input class="form-control mr-sm-0" name='sbar' type="search" placeholder="Enter a title..." >
+                <input (ngModel)='search.content' class="form-control mr-sm-0" name='sbar' type="search" placeholder="Enter a title..." >
                 <span class="input-group-append">
                 <button id="search-button" type="submit" class="btn btn-outline-secondary border-left-0 border"> Search</button>
               </span>
@@ -28,25 +27,12 @@
               <div ngbDropdown class="nav-item dropdown">
                 <button class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>Profile</button>
                 <div ngbDropdownMenu aria-labelledby="dropdown01" class="dropdown-menu dropdown-menu-right">
-                  <a ngbDropdownItem  class="dropdown-item" href="http://localhost/project/acctinfo.php">Edit Account</a>
-                  <a ngbDropdownItem class="dropdown-item" href="../../../../myprofile.php">Lists & Friends</a>
-                  <a ngbDropdownItem class="dropdown-item" href="../../../../login.php">Log Out</a>
+                  <a ngbDropdownItem  class="dropdown-item" href="http://localhost:4200">Edit Account</a> <!-- correct link? -->
+                  <a ngbDropdownItem class="dropdown-item" href="http://localhost/project/myprofile.php">Lists & Friends</a>
+                  <a ngbDropdownItem class="dropdown-item" href="http://localhost/project/login.php">Log Out</a>
                 </div>
               </div>
             </div>
-        <!-- </ul>
-   </div>
-    </nav>
-  </header> -->
   
-          <!-- OLD DROPDOWN HTML
-          <li ngbDropdown class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-              <a ngbDropdownItem class="dropdown-item" href="../../../../acctinfo.php">Edit Account</a>
-              <a ngbDropdownItem class="dropdown-item" href="../../../../myprofile.php">Lists & Friends</a>
-              <a ngbDropdownItem class="dropdown-item" href="../../../../login.php">Log Out</a>
-           </div>
-          </li> -->
         
    

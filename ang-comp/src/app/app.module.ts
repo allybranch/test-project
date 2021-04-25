@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from "@angular/forms";
 import '@angular/compiler';
 
 
@@ -13,15 +13,15 @@ import { RoutingModule } from 'angular-routing';
   declarations: [
     AppComponent,
     HeaderComponent  
-  ],
+  ], 
   imports: [
     BrowserModule,
     NgbModule,
-    RoutingModule.forRoot(),
+    FormsModule
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }   
+export class AppModule { }     
   
