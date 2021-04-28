@@ -1,13 +1,3 @@
-<!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<!-- <?php 
-        session_start(); // make sessions available
-        // check that user if logged in, if not send them back to the login page
-        if ($_SESSION['user']==""){
-            header('Location: ../../../login.php');
-        }
-        require('../../../connectdb.php');
-        include('../../../header.html');
-?> -->
 
 <!-- ACCT INFO PAGE  -->
 <!DOCTYPE html>
@@ -20,63 +10,80 @@
     <body>
         <!-- includes the header -->
         <app-header></app-header>
-
         <!-- User Information form -->
         <div class="main-page-area">
             <div class='profile-container1'>
-                <form method="get" id='edit-info-form' action="acctinfo.php" >
-                    <h1> Account Information </h1>
-                    <!-- Form Fields -->
-                    <div class="row align-items-end">
-                        <div class="col-9">
-                            <label for="username">Username:</label>
-                            <input type="text" name='username' id="inputUsername" class="form-control" disabled>
-                            <span name="error" class="error message" id="user_msg"> </span>
-                        </div>
-                        <div class='col-3' > </div> <!-- keeping the user box as the right size -->
+                <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+                    <h1> Update Account Information </h1>                
+                    <div class="row g-3 align-items-end">
+                                <label for="username">Username:</label>
+                                <input type="text"
+                                required minlength="2"
+                                #username="ngModel"
+                                [class.is-invalid]="(username.invalid && username.touched)"
+                                class="form-control is-invalid" [(ngModel)]="userModel.username"
+                                name="username"> 
+                                <small class="text-danger" [class.d-none]="username.valid || username.untouched">
+                                Please enter your current username.
+                                </small> 
                     </div>
                     <div class="row g-3 align-items-end">
-                        <div class="col-9">
-                            <label for="password">Password:</label>
-                            <input type="text" name='password' id="inputPassword" class="form-control" placeholder="Enter New Password" >
-                            <span name="error" class="error message" id="pwd_msg"> </span>
-                        </div>
-                        <div class='col-3'>
-                            <button type='submit' class="profile-button" id='save'>Save</button>
-                        </div>
+                            <label for="firstname">New First Name:</label>
+                            <input type="text"
+                            required minlength="2"
+                            #firstname="ngModel"
+                            [class.is-invalid]="(firstname.invalid && firstname.touched)"
+                            class="form-control is-invalid" [(ngModel)]="userModel.firstname"
+                            name="firstname"> 
+                            <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched">
+                            Name is required and must be at least 2 characters.
+                            </small>                            
                     </div>
                     <div class="row g-3 align-items-end">
-                        <div class="col-9">
-                            <label for="password">First Name:</label>
-                            <input type="text" id='firstname' name='firstname' class="form-control"  >
-                            <span class="error message" id="fname_msg"></span>
-                        </div>
-
-                        <div class='col-3'>
-                            <button type='submit' class="profile-button" id='save' >Save</button>
-                        </div>
+                            <label for="lastname">New Last Name:</label>
+                            <input type="text"
+                            required minlength="2"
+                            #lastname="ngModel"
+                            [class.is-invalid]="(lastname.invalid && lastname.touched)"
+                            class="form-control is-invalid" [(ngModel)]="userModel.lastname"
+                            name="lastname">   <!-- note: we don't use autofocus here. Why? -->
+                            <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">
+                            Last name is required and must be at least 2 characters.
+                            </small>  
+                    </div>
+                    <div class="row g-3 align-items-center">
+                            <label for="email">New Email</label>
+                            <input type="email" class="form-control" required
+                            #email="ngModel"
+                            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                            [class.is-invalid]="email.invalid && email.touched"
+                            [(ngModel)]="userModel.email" name="email">
+                            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required and must be in proper format</small>
                     </div>
                     <div class="row g-3 align-items-end">
-                        <div class="col-9">
-                            <label for="password">Last Name:</label>
-                            <input type="text" id='lastname' name='lastname' class="form-control" >
-                            <span class="error message" id="lname_msg"></span>
-                        </div>
-                        <div class='col-3'>
-                            <button type='submit' class="profile-button" id='save' >Save</button>
-                        </div>
+                            <label for="password">New Password:</label>
+                            <input type="text"
+                            required minlength="8"
+                            #pass="ngModel"
+                            [class.is-invalid]="(pass.invalid && pass.touched)"
+                            class="form-control is-invalid" [(ngModel)]="userModel.pass"
+                            name="password">   <!-- note: we don't use autofocus here. Why? -->
+                            <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">
+                            Password is required and must be at least 8 characters.
+                            </small>  
                     </div>
                     <div class="row g-3 align-items-end">
-                        <div class="col-9">
-                        <label for="email">Email</label>
-                            <input type="email" id="inputEmail" name='email' class="form-control"  >
-                        </div>
-                        <div class='col-3'>
-                            <button type='submit' class="profile-button" id='save' >Save</button>
-                        </div>
+                        <button id="changeUserSubmit" class="btn profile-button"type="submit"
+                        [disabled]="!userForm.form.valid"
+                        (click)="changeUser(userForm.value)"
+                        title="always enabled"
+                        name="btn" value="placeorder">
+                        Change Info
+                        </button>
                     </div>
                 </form>
             </div>
+            <p> {{responsedata | json}} </p>
         </div>
     </body>
     

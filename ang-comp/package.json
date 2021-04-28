@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "@types/chart.js": "^2.9.32",
     "angular-routing": "^0.3.1",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",

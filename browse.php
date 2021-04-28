@@ -12,23 +12,18 @@
   </head>
   <body>
     <?php include('header.html') ?>
+    <?php include('browseTitles.php') ?>
     <div class="main-page-area">
       <h1 class="page-title"> Explore New Titles </h1>
       <h4 class="list-title"> Category 1 </h4>
       <div class="owl-carousel owl-theme .row1">
-          <div class="item">
-            <div class="flip-card" >
-              <div class="flip-card-inner" >
-                <div class="flip-card-front">
-                  <img src="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABVpWLG11PojFPeqpJyc14l1iTPUtb-7K9nONUphboJDuTEUdXQNfPgHzcttWQhMCSvsS6SSo5qmheyWPwmLPGmqpfCGXV8MvxrJMeLUbMgxLFAOgxWcw8on2bnW3.jpg?r=748" ></img>
-                </div>
-                <div class="flip-card-back">
-                  <h6> Arrested Development </h6>
-                  <p> Description </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- <div class="item">
+            <?php
+              foreach ($category1 as $title){
+                $title -> flipcard();
+              }
+            ?>
+          </div> -->
           <div class="item">
             <div class="flip-card" >
               <div class="flip-card-inner" >

@@ -43,12 +43,17 @@ a:hover {
   background-color:  #E03E52;
 }
 #search-button{
-  background-color: #059abb;
-  color: white;
+  /* background-color: #059abb; */
+  background-color: white;
+  /* color: white; */
   margin-right: 30px;
+  max-width: 100px;
+  padding: 0px !important;
 }
-#search-button:hover{
-  color:black;
+#search-img{
+  max-height: 25px;  
+  height: auto;  
+  padding: 0 10px;
 }
 .dropdown-menu{
   top:40px;
@@ -93,7 +98,7 @@ form > h1{
   color: black;
 }
 form > .row {
-  margin: 20px auto;
+  margin: 15px auto;
   max-width: 400px
 }
 form > .col {

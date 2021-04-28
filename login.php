@@ -53,12 +53,12 @@ $_SESSION['user'] = "";
           <div id='error' class='text-center'>
               Username and password were not found. Please try again.
           </div>
-          <div class="row g-3">
+          <div class="login-row row g-3">
             <div class="col">
               <input type="text" name='username' id="inputUsername" class="form-control" placeholder="Username" required autofocus>
             </div>
           </div>
-          <div class="row g-3">
+          <div class="login-row row g-3">
               <div class="col">
                 <input type="password" name='password' id="inputPassword" class="form-control" placeholder="Password" required>
                 <div class="form-group showPassword">

@@ -1,5 +1,5 @@
 <!-- Ally Branch (aab4ad) and Leigh Striffler (lss4de) -->
-<?php include('header.html');
+<?php ;
       session_start();
 ?>
 <!DOCTYPE html>
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="stylesheets/owlcarousel/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
   </head>
+  <header>
+    <?php include('header.html') ?>;
+  </header>
   <body>
     <div class="main-page-area">
       <h1 id='heading'> Search Results </h1>

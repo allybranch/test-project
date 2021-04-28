@@ -61,7 +61,7 @@ session_start(); // make sessions available
         </div>
 
         <!-- Register Form: fields, submit btn -->
-        <div class="row g-0">
+        <div class="register-row row g-0">
           <div class="col">
             <input type="text" id='firstname' name='first' class="form-control" placeholder="First Name" aria-label="First name" autofocus>
             <span class="error message" id="fname_msg"></span>
@@ -71,18 +71,18 @@ session_start(); // make sessions available
             <span class="error message" id="lname_msg"></span>
           </div>
         </div>
-        <div class="row g-3">
+        <div class="register-row row g-3">
           <div class="col">
             <input type="email" id="inputEmail" name='email' class="form-control" placeholder="Email Address" >
           </div>
         </div>
-        <div class="row g-3">
+        <div class="register-row row g-3">
           <div class="col">
             <input type="text" id="inputUsername" name='username' class="form-control" placeholder="Username" required>
             <span class="error message" id="user_msg"></span>
           </div>
         </div>
-        <div class="row g-3">
+        <div class="register-row row g-3">
             <div class="col">
               <input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" onfocus="showPwdInstructions()" required>
               <span class="error message" id="pwd_msg"></span>

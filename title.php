@@ -3,9 +3,9 @@
   session_start(); 
   // make sessions available
   // check that user if logged in, if not send them back to the login page
-  if ($_SESSION['user']==""){
-    header('Location: login.php');
-  }
+  // if ($_SESSION['user']==""){
+  //   header('Location: login.php');
+  // }
   require('connectdb.php');
   include('header.html');
   global $db;
@@ -81,7 +81,6 @@
     $statement->bindValue(':listname', $listname);
     $statement->bindValue(':titleid', $titleid);
     $statement->execute();
-    
     }
 
   ?> 
