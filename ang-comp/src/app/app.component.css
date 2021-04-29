@@ -247,6 +247,16 @@ html, body{
   .col-3{
     padding-left: 0px;;
   }
+  #update-failed{
+    text-align:center;
+    color:white;
+    margin:auto;
+    background:lightpink;
+    width:50%
+  }
+  #update-confirmed{
+
+  }
   
   
   

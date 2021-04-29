@@ -22,7 +22,7 @@ export class AppComponent {
 
   username = 'test';
 
-  message = 'confirm';
+  message = '';
 
 
   changeUser(data: any): void {
@@ -59,13 +59,15 @@ export class AppComponent {
     this.data_submitted = form;
     console.log('form submitted ', form);
     let params = JSON.stringify(form);
-    this.http.post<User>('http://localhost/projects/project/changeUser.php', params)
+    this.http.post<User>('http://localhost/project/changeUser.php', params)
     .subscribe((response_from_php) => {
        this.updateinfo = response_from_php;
         this.toggle = true;
+        this.message="confirm";
     }, (error_in_communication) => {
        // An error occurs, handle an error in some way.
        console.log('Error ', error_in_communication);
+       this.message="fail"; //when will we ever see this though?
     }) 
   }
 

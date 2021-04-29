@@ -92,10 +92,18 @@
                             Change Info
                             </button>
                         </div>
-                        <div [ng-switch]="message">
-                            <div *ngSwitchCase="'confirm'">Update Confirmed</div>
-                            <!-- <div *ngSwitchCase="fail">Update Failed</div> -->
-                            <!-- <div *ngSwitchDefault>Default</div> -->
+                        <div [ngSwitch]="message" > <!-- theyre really ugly don't hate me-->
+                            <div *ngSwitchCase="'confirm'"
+                            [style.text-align]="'center'" [style.color]="'white'" 
+                            [style.margin]="'auto'" [style.background]="'lightgreen'" [style.width]="'50%'"
+                            > <strong>Update Confirmed</strong></div>
+                            
+                            <div *ngSwitchCase="'fail'"
+                            [style.text-align]="'center'" [style.color]="'white'" 
+                            [style.margin]="'auto'" [style.background]="'lightpink'" [style.width]="'50%'"
+                            ><strong>Update Failed</strong></div> 
+                            
+                            <div *ngSwitchDefault></div>
                         </div>
                 </form>
             </div>
