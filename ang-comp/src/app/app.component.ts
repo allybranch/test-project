@@ -63,11 +63,18 @@ export class AppComponent {
     .subscribe((response_from_php) => {
        this.updateinfo = response_from_php;
         this.toggle = true;
-        this.message="confirm";
+
+        //decide which message to display
+        if(this.updateinfo['count']==1){
+          this.message="confirm";
+        }
+        else{
+          this.message="fail";
+        }
+        
     }, (error_in_communication) => {
        // An error occurs, handle an error in some way.
        console.log('Error ', error_in_communication);
-       this.message="fail"; //when will we ever see this though?
     }) 
   }
 

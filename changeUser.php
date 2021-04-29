@@ -43,15 +43,8 @@ $results = $statement->fetchAll();
 $statement->closecursor();
 $count = $statement->rowCount();
 
-// Check if we changed a row in the table
-if ($count == '0'){
-    $message = "Update Failed!";
-}
-else{
-    $message = "Update Sucessful!";
-}
 
-echo json_encode(['data'=>$postdata, 'message'=>$message, 'count'=>$count]);
+echo json_encode(['data'=>$postdata, 'count'=>$count]);
 
 // 
 ?>
