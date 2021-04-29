@@ -17,13 +17,13 @@
       <h1 class="page-title"> Explore New Titles </h1>
       <h4 class="list-title"> Category 1 </h4>
       <div class="owl-carousel owl-theme .row1">
-          <!-- <div class="item">
-            <?php
-              foreach ($category1 as $title){
-                $title -> flipcard();
-              }
-            ?>
-          </div> -->
+          <?php
+            foreach ($category1 as $title){
+              echo '<div class="item">';
+              $title -> flipcard();
+              echo '</div>';
+            }
+          ?>
           <div class="item">
             <div class="flip-card" >
               <div class="flip-card-inner" >

@@ -21,7 +21,6 @@ $postdata = file_get_contents("php://input");
 // Extract json format to PHP array
 $request = json_decode($postdata);
 
-
 $data = [];
 foreach ($request as $k => $v)
 {
@@ -32,26 +31,23 @@ foreach ($request as $k => $v)
 # Connect to the DB and update the account information
 require('connectdb.php');
 global $db;
-$query = "UPDATE `users` SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email WHERE `users`.`username` = :username";
+$query = "SELECT * FROM `users` WHERE `users`.`username` = :username";
 $statement = $db->prepare($query);
-$statement->bindValue(':firstname', $data[0]['firstname']);
-$statement->bindValue(':lastname', $data[0]['lastname']);
-$statement->bindValue(':email', $data[0]['email']);
 $statement->bindValue(':username', $data[0]['username']);
 $statement->execute();
 $results = $statement->fetchAll();
 $statement->closecursor();
 $count = $statement->rowCount();
+$user = $results[0];
 
 // Check if we changed a row in the table
 if ($count == '0'){
-    $message = "Update Failed!";
+    $message = "Check Failed!";
 }
 else{
-    $message = "Update Sucessful!";
+    $message = "Check Sucessful!";
 }
 
-echo json_encode(['data'=>$postdata, 'message'=>$message, 'count'=>$count]);
-
 // 
+echo json_encode(['message'=>$message, 'userInfo'=>$user]);
 ?>

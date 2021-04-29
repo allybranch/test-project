@@ -35,6 +35,12 @@ $category1[] = new Title(
     $info = "description",
     $img="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABVpWLG11PojFPeqpJyc14l1iTPUtb-7K9nONUphboJDuTEUdXQNfPgHzcttWQhMCSvsS6SSo5qmheyWPwmLPGmqpfCGXV8MvxrJMeLUbMgxLFAOgxWcw8on2bnW3.jpg?r=748"
 );
+$category1[] = new Title(
+  $title = "Arrested Devlopment",
+  $info = "description",
+  $img="https://occ-0-2433-2430.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABVpWLG11PojFPeqpJyc14l1iTPUtb-7K9nONUphboJDuTEUdXQNfPgHzcttWQhMCSvsS6SSo5qmheyWPwmLPGmqpfCGXV8MvxrJMeLUbMgxLFAOgxWcw8on2bnW3.jpg?r=748"
+);
+
 
 $category2 = array();
 
