@@ -50,7 +50,6 @@
             </form>
         </div>
         '; ?>
-        <img> Put movie poster here </img>
         <div class="title-description">
             <p><?php echo $result['overview']; ?></p>
         </div>
@@ -62,24 +61,21 @@
   if ($_SERVER['REQUEST_METHOD']=='POST'){ // UNFINISHED
     $listname = 'none';
     if(isset($_POST['want-to-watch'])) {
-        echo "Added to Want to Watch";
         $listname = 'want-to-watch';
     }
     if(isset($_POST['watched'])) {
-        echo "Added to Watched list";
         $listname = 'watched';
-
     }
     if(isset($_POST['favorites'])) {
-        echo "Added to Favorites";
         $listname = 'favorites';
     }
     global $db;
-    $query = "INSERT INTO `lists` (`listid`, `username`, `listname`, `titleid`) VALUES (NULL, :user, :listname, :titleid)";
+    $query = "INSERT INTO `lists` (`listid`, `username`, `listname`, `titleid`, `title`) VALUES (NULL, :user, :listname, :titleid, :title)";
     $statement = $db->prepare($query); 
     $statement->bindValue(':user', $_SESSION['user'] );
     $statement->bindValue(':listname', $listname);
     $statement->bindValue(':titleid', $titleid);
+    $statement->bindValue(':title', $title);
     $statement->execute();
     }
 

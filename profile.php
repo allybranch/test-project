@@ -2,15 +2,13 @@
   session_start(); 
   // make sessions available
   // check that user if logged in, if not send them back to the login page
-  if ($_SESSION['user']==""){
-    header('Location: login.php');
-  }
   require('connectdb.php');
   include('header.html');
   global $db;
   // get user info from the database
   $query = "select * from users WHERE username=:user";
   $statement = $db->prepare($query);
+  $username = "";
   if (isset($_GET['username'])){
     $username= $_GET['username'];
   }
@@ -51,18 +49,67 @@
       </div>
       <!-- User Title Lists -->
       <div id='profile-lists'>
-        <h4 class="list-title"> Currently Watching </h4>
-        <div class="owl-carousel owl-theme">
+          <h4 class="list-title"> Want To Watch </h4>
+          <div class="owl-carousel owl-theme">
+            <?php
+                  $query = "select * from lists WHERE username=:username AND listname='want-to-watch'";
+                  $statement = $db->prepare($query);
+                  $statement->bindValue(':username', $username);
+                  $statement->execute();
+                  $results = $statement->fetchAll();
+                  $statement->closeCursor();
+                  foreach ($results as $result)
+                  {	
+                  echo'
+                    <div class="item">
+                      <div class = "title-item title-item-3">
+                        <a href="title.php?id='. $result['titleid'] .'">' . $result["title"] . '</a>
+                      </div>
+                    </div>';                }
+                ?>
+            </div>
+          <h4 class="list-title"> Watched </h4>
+          <div class="owl-carousel owl-theme">
+          <?php
+                $query = "select * from lists WHERE username=:username AND listname='Watched'";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':username', $username);
+                $statement->execute();
+                $results = $statement->fetchAll();
+                $statement->closeCursor();
+                foreach ($results as $result)
+                {	
+                echo'
+                  <div class="item">
+                    <div class = "title-item title-item-2">
+                      <a href="title.php?id='. $result['titleid'] .'">' . $result["title"] . '</a>
+                    </div>
+                  </div>';                }
+              ?>
+          </div>
+          <h4 class="list-title"> Favorites </h4>
+          <div class="owl-carousel owl-theme">
+              <?php
+                $query = "select * from lists WHERE username=:username AND listname='Favorites'";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':username', $username);
+                $statement->execute();
+                $results = $statement->fetchAll();
+                $statement->closeCursor();
+                foreach ($results as $result)
+                {	
+                echo'
+                  <div class="item">
+                    <div class = "title-item title-item-1">
+                      <a href="title.php?id='. $result['titleid'] .'">' . $result["title"] . '</a>
+                    </div>
+                  </div>';                }
+              ?>
+          </div>
         </div>
-        <h4 class="list-title"> Watched This Year </h4>
-        <div class="owl-carousel owl-theme">
-        </div>
-        <h4 class="list-title"> Want To Watch </h4>
-        <div class="owl-carousel owl-theme">
-        </div>
-      </div>
       <!-- Friends List -->
       <div id="profile-friends">
+      <div id="profile-friends-list">
         <?php
           $query = "select * from friends WHERE username=:username";
           $statement = $db->prepare($query);
@@ -72,7 +119,7 @@
           $statement->closecursor();
           foreach ($results as $result){	
             if ($result['frienduser']==$_SESSION['user']){
-                echo "<div class='friend-row' ><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
+                echo "<div class='friend-row'><h4>" . $result['friendfirst'] . " " . $result['friendlast'] .  "</h4>@";
                 echo  "<a href='myprofile.php" . "'>". $result['frienduser'] . "</a></div>"; 
             }
             else{
@@ -81,6 +128,7 @@
             }          
           }
         ?>
+      </div>
       </div>
     </div>
   </body>
@@ -96,9 +144,9 @@
   <!-- Initialize carousel -->
   <script type="text/javascript">
     $('.owl-carousel').owlCarousel({
-      loop:true,
+      loop:false,
       margin:5,
-      nav:true,
+      nav:false,
       autoHeight:true,
       responsive:{
           0:{

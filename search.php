@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="stylesheets/styles.css">
   </head>
   <header>
-    <?php include('header.html') ?>;
+    <?php include('header.html') ?>
   </header>
   <body>
     <div class="main-page-area">

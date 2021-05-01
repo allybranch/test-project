@@ -192,9 +192,8 @@ form > .col {
 .add-to-list{
   display: inline;
   float: right;
-  margin-right: 10px;
+  margin: 0 10px 0 50px;
   color: white;
-  border: none;
   background-color:  #FFAE4B;
   border-radius: 20px;
   padding: 5px 10px;
@@ -209,7 +208,7 @@ form > .col {
 
 .dropdown {
   position: relative;
-  float: right;
+  /* float: right; */
 }
 .dropdown-content {
   display: none;
@@ -265,6 +264,9 @@ button{
   width: 95%;
   padding: 10px;
   margin: auto;
+}
+.friend-row{
+  padding: 5px;
 }
 .friend-row:nth-child(even){
   background-color:  white;
@@ -363,7 +365,10 @@ button{
   color: white;
   transform: rotateY(180deg);
   padding: 5px;
-  background-color: #059abb;
+  background-color: #E03E52;
+  vertical-align:middle;
+  display:table-cell;
+  align-items: ;
 }
 .page-title{
   padding-left: 20px;
@@ -390,4 +395,25 @@ button{
 }
 .owl-carousel {
   padding: 0px 20px
+}
+
+
+
+.title-item{
+  width: 150px;
+  height: 115px;
+  vertical-align:middle;
+  display:table-cell;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.title-item-1{
+  background-color: #E03E52;
+}
+.title-item-2{
+  background-color: #FFAE4B;
+}
+.title-item-3{
+  background-color: #059abb;
 }
