@@ -59,12 +59,12 @@ export class AppComponent {
     this.data_submitted = form;
     console.log('form submitted ', form);
     let params = JSON.stringify(form);
-    this.http.post<User>('http://localhost/project/changeUser.php', params)
+    this.http.post<User>('http://localhost/projects/project/changeUser.php', params)
     .subscribe((response_from_php) => {
        this.updateinfo = response_from_php;
         this.toggle = true;
-
         //decide which message to display
+        console.log("Test: ", this.updateinfo['count']);
         if(this.updateinfo['count']==1){
           this.message="confirm";
         }

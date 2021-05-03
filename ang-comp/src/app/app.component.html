@@ -37,7 +37,7 @@
                         </button>
                     </div>
                 </form>
-                <form *ngIf="toggle" #changeUserForm="ngForm" (ngSubmit)="onChangeUserSubmit(changeUserForm.value)">
+                <form *ngIf="toggle" #changeUserForm="ngForm" >
                         <div class="row g-3 align-items-end" [style.display]="'none'">
                             <label for="username">Username:</label>
                             <input type="text"
