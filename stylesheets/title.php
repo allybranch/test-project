@@ -14,7 +14,6 @@
   </head>
   <body>
     <div class="main-page-area">
-
         <!-- <div class="dropdown">
             <button class="add-to-list"><img src="images/add.png" class="add-list-img"></img> Add to List </button>
             <div class="dropdown-content">
@@ -42,18 +41,6 @@
     $statement->execute();
     }
   ?>
-
-  <script>
-    function addToList(e){ // UNFINISHED FUNCTION
-      // When the addToList button is pressed update and submit hidden form with values for titleID and list_name
-      titleid = e.target.parentElement.name;
-      listname = e.target.name;
-      document.getElementById("addtitleID").value = titleid;
-      document.getElementById("listname").value = listname;
-      //document.getElementById("add-list-form").submit();
-    }
-  </script>
-
   <!-- Jquery and Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

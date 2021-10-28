@@ -38,7 +38,7 @@ session_start();
   </head>
   <body>
     <div class="main-page-area">
-      <div class='profile-container1'>
+      <div class="profile-container1">
       <h1 class='text-center' id='listcount'> Welcome Back <?php echo $first?>! </h1>
       <!-- Toggle Buttons -->
       <div class="profile-buttons">
@@ -49,7 +49,6 @@ session_start();
         <div id='profile-title'>
           <h2 > My Lists </h2>
         </div>
-        <button id="new-list-button" onclick="newList()">New List</button>
         <button id="new-friend-button" onclick="addFriend()">Add Friend</button>
         <!-- User Title Lists -->
         <div id='profile-lists'>
@@ -141,7 +140,6 @@ session_start();
         </div>
     </div>
   </body>
-
   <script> 
   /* View Friends Toggle */ 
     function ViewFriends(){
@@ -151,18 +149,14 @@ session_start();
           title.innerHTML =  "<h2> My Friends </h2> ";
           lists.style.display = "none";
           friends.style.display = "block";
-          listBtn=document.getElementById("new-list-button");
-          listBtn.style.display='none';
           friendBtn=document.getElementById("new-friend-button");
           friendBtn.style.display='block';
         }
       </script>
-
-      <?php 
+    <?php
     if(isset($_SESSION['toggle']) && $_SESSION['toggle']=='true'){ //should display the friends lists
       echo "<script> ViewFriends(); </script>";
     }
-
     # Add a friend to list by username)
     if ($_SERVER['REQUEST_METHOD'] == "POST" && strlen($_POST['friendusername']) > 0){
       global $db;
@@ -197,10 +191,7 @@ session_start();
       $_SESSION['toggle']='true';
       echo "<script>  window.location.href='myprofile.php';  </script>";
       }
-
-
   ?>
-
   <!-- JQuery and Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -246,8 +237,6 @@ session_start();
       lists.style.display = "block";
       friends.style.display = "none";
       document.getElementById("profile-title").innerHTML = "<h2> My Lists </h2>";
-      listBtn=document.getElementById("new-list-button");
-      listBtn.style.display='block';
       friendBtn=document.getElementById("new-friend-button");
       friendBtn.style.display='none';
     }
@@ -255,52 +244,5 @@ session_start();
       friendForm=document.getElementById("add-friend-form");
       friendForm.style.display='block';      
     }
-     /* Keep track of number of lists */
-    var numLists=3; //list counter
-    function newList(){
-      //get the lists' container
-      var node = document.getElementById('profile-lists');
-      node.insertAdjacentHTML('beforeend',document.getElementById('carousel').innerHTML);
-      numLists++;
-      /* initialize empty carousel */
-      $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:5,
-        nav:true,
-        autoHeight:true,
-        responsive:{
-          0:{
-              items:2
-          },
-          500:{
-              items:3
-          },
-          700:{
-              items:4
-          },
-          900:{
-              items:5
-          },
-          1100:{
-              items:6
-          },
-          1300:{
-              items:7
-          }
-        }
-      })
-      /* Arrow Function */
-      var string = numLists => "You have "+ numLists + " lists."; //arrow function
-      document.getElementById('listcount').innerHTML= "<h2>"+ string(numLists)+ "</h2>";
-    }
-  </script>
-    <!-- Fill the New List -->
-  <script type='text/template' id='carousel'>
-    <h4 class='list-title'> New List </h4>
-    <div class="owl-carousel owl-theme">
-      <div class='item' style='height:80px !important; width:135px'>
-        <img style='height: 100%; background-color:grey'/>
-      </div>
-    </div>
   </script>
 </html>

@@ -17,8 +17,8 @@ session_start(); // make sessions available
     <header>
       <nav class="navbar navbar-expand-sm">
         <div class="navbar-brand">
-          <img class=navbar-logo src="images/logo3.png" alt="">
-          <a href="browse.php">GoodFilms</a>
+          <img class="navbar-logo" src="images/logo3.png" alt="">
+          <a href="">GoodFilms</a>
         </div>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>

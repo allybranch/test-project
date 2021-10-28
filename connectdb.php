@@ -1,28 +1,14 @@
 <?php
 
-/******************************/
-// connecting to GCP cloud SQL instance
-
-// $username = 'root';
-// $password = 'your-root-password';
-
-// $dbname = 'your-database-name';
-
-// if PHP is on GCP standard App Engine, use instance name to connect
-// $host = 'instance-connection-name';
-
-// if PHP is hosted somewhere else (non-GCP), use public IP address to connect
-// $host = "public-IP-address-to-cloud-instance";
 
 
 /******************************/
 // connecting to DB on XAMPP (local)
 
-$username = 'WebAppProject';
-$password = 'GoodF!lms1358';
-$host = 'localhost:3306';
+$username = 'UserAccount';
+$password = 'vEDtLBzwl6mwkSxU';
+$host = 'localhost:3307';
 $dbname = 'WebAppProject';
-
 
 /******************************/
 
